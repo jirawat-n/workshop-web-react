@@ -1,0 +1,11 @@
+.item-deltail {
+    display       : flex;
+    flex-direction: row;
+
+}
+
+.Grid {
+    justify-content: center;
+    align-items    : center;
+    text-align     : center;
+}

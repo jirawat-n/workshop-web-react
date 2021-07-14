@@ -1,0 +1,10 @@
+.block {
+    display: flex;
+    flex-direction: row;
+}
+
+.sideblock {
+    justify-content: center;
+    align-items: center;
+    display: block;
+}
