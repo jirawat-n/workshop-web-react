@@ -7,7 +7,6 @@ function Sidebar() {
     const history = useHistory();
     const handleItemClick = (event) => {
         const selected = event.target.textContent;
-        console.log(selected)
         setSelect(selected)
         if (selected === "Home") {
             setSelect(selected)

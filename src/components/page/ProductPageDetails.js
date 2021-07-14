@@ -2,7 +2,6 @@ import React from 'react'
 import { Grid } from 'semantic-ui-react'
 import Sidebar from '../layout/Sidebar'
 import '../assets/blockcontent.css'
-import Product from '../content/Product'
 import ProductDetail from '../content/ProductDetail'
 function ProductPageDetails() {
     return (

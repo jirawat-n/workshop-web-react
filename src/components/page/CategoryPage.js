@@ -1,6 +1,5 @@
 import React from 'react'
 import { Grid, Container } from 'semantic-ui-react'
-import Sidebar from '../layout/Sidebar'
 import '../assets/blockcontent.css'
 import Category from '../content/Category'
 function CategoryPage() {

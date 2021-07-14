@@ -5,7 +5,8 @@ import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
 import '../assets/table.css'
 function TableCart() {
-    const cart = useSelector(state => state.cart)
+    const { cart } = useSelector(state => state.cart)
+    console.log(cart)
     const dispatch = useDispatch();
     return (
         <Container>
@@ -20,6 +21,7 @@ function TableCart() {
                         <Table.HeaderCell width={2}>Manage</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
+
                 {cart.length === 0 ? <Table.Cell colSpan={6}><h3 style={{ textAlign: "center" }}>Cart is Empthy</h3></Table.Cell> : cart.map(item =>
                     <Table.Body key={item.id}>
                         <Table.Row>

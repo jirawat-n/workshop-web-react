@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { useHistory, useParams } from 'react-router'
-import { Card, Grid, Image, Button, Icon } from 'semantic-ui-react'
+import { useParams } from 'react-router'
+import { Grid, Image, } from 'semantic-ui-react'
 function ProductDetail() {
     const [Product, setProduct] = useState([])
     const { productId } = useParams();
