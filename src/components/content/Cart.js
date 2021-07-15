@@ -42,14 +42,14 @@ function TableCart() {
                                     <Button.Content visible>
                                         <Icon name='delete' /></Button.Content>
                                     <Button.Content hidden>
-                                        Delete
+                                        Redux Delete
                                     </Button.Content>
                                 </Button>
                                 <Button color='red' animated onClick={() => action(DELETE_CART_REQ, item.id)}>
                                     <Button.Content visible>
                                         <Icon name='delete' /></Button.Content>
                                     <Button.Content hidden>
-                                        Delete
+                                        Saga Delete
                                     </Button.Content>
                                 </Button>
                             </Table.Cell>
@@ -63,7 +63,7 @@ function TableCart() {
                         </Table.HeaderCell>
                         <Table.HeaderCell style={{ textAlign: 'center' }}>
                             {cart.length === 0 ? <div></div>
-                                : <span>Total : {price} Bath.</span>
+                                : <span> {cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)} Bath.</span>
                             }
                         </Table.HeaderCell>
                         <Table.HeaderCell >

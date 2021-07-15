@@ -5,7 +5,7 @@ import { Loader } from 'semantic-ui-react'
 import { useHistory } from 'react-router'
 import { Button, Form, Container } from 'semantic-ui-react'
 export default function Login() {
-    const [username, setusername] = useState('')
+    const [username, setUsername] = useState('')
     const history = useHistory();
     const [password, setPassword] = useState('')
     const { user } = useSelector(state => state.auth)
@@ -20,7 +20,7 @@ export default function Login() {
                 <Form>
                     <Form.Field>
                         <label>Username</label>
-                        <input type="text" name='username' value={username} required onChange={e => setusername(e.target.value)} />
+                        <input type="text" name='username' value={username} required onChange={e => setUsername(e.target.value)} />
                     </Form.Field>
                     <Form.Field>
                         <label>Password</label>

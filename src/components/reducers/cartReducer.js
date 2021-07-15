@@ -13,9 +13,7 @@ export function cartReducer(state = initialState, action) {
                 updatedCart = [...state.cart, action.payload]
             } else {
                 updatedCart = state.cart.map((item) => ({
-                    ...item,
-                    quantity:
-                        item.id === foundItem.id ? item.quantity + 1 : item.quantity,
+                    ...item, quantity: item.id === foundItem.id ? item.quantity + 1 : item.quantity,
                 }))
             }
             console.log('Update Success', updatedCart)
