@@ -1,7 +1,7 @@
 import React, { Component, } from 'react';
 import axios from "axios";
 import { Button, Form, Container } from 'semantic-ui-react'
-class SignIn extends Component {
+class SignIn2 extends Component {
     state = {
         username: '',
         password: '',
@@ -42,7 +42,7 @@ class SignIn extends Component {
                     </Form.Field>
                     <Form.Field>
                         <label>Password</label>
-                        <input name="password" onChange={this.handleChange_2} placeholder='password' />
+                        <input name="password" type="password" onChange={this.handleChange_2} placeholder='password' />
                     </Form.Field>
                     <Button type='submit'>Submit</Button>
 
@@ -51,4 +51,4 @@ class SignIn extends Component {
         );
     }
 }
-export default SignIn;
+export default SignIn2;

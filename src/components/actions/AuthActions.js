@@ -1,5 +1,6 @@
 import { startFetch, endFetch, errorFetch } from './StatusActions'
 import { signin } from '../data/user'
+import axios from 'axios'
 export const SET_AUTH = 'SET_AUTH'
 
 export function setAuth(user) {
@@ -9,23 +10,30 @@ export function setAuth(user) {
     }
 }
 
-export function fetchAuthAsync(email, password) {
+export function fetchAuthAsync(username, password) {
     return async function (dispatch) {
-        try {
-            dispatch(startFetch())
 
-            const user = await signin(email, password)
+        dispatch(startFetch())
+        axios.post(`http://127.0.0.1:8000/api/token/`, { username, password })
+            .then(data => {
+                const user = data
+                console.log('User Naja', user)
+                if (user) {
+                    dispatch(setAuth(user))
+                    dispatch(errorFetch(''))
+                    dispatch(endFetch())
+                }
 
-            if (user) {
-                dispatch(setAuth(user))
-                dispatch(errorFetch(''))
+            })
+            .catch((error) => {
+                console.log(error.response?.data || error);
+                dispatch(setAuth(null))
+                dispatch(errorFetch(error.response.data))
                 dispatch(endFetch())
+            })
 
-            }
-        } catch (error) {
-            dispatch(setAuth(null))
-            dispatch(errorFetch(error))
-            dispatch(endFetch())
-        }
+        // const user = await signin(username, password)
+
+
     }
 }

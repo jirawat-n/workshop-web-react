@@ -3,9 +3,11 @@ import { Icon, Label, Button, Table, Image, Container } from 'semantic-ui-react'
 import { deleteCart } from '../actions/CartActions'
 import { useSelector } from 'react-redux'
 import { useDispatch } from 'react-redux'
+// สวัสดี
 import '../assets/table.css'
 function TableCart() {
     const { cart } = useSelector(state => state.cart)
+    const price = 0;
     console.log(cart)
     const dispatch = useDispatch();
     return (
@@ -57,10 +59,17 @@ function TableCart() {
                 )}
                 <Table.Footer fullWidth>
                     <Table.Row>
-                        <Table.HeaderCell colSpan='6'>
+                        <Table.HeaderCell colSpan='4'>
+                        </Table.HeaderCell>
+                        <Table.HeaderCell style={{ textAlign: 'center' }}>
+                            {cart.length === 0 ? <div></div>
+                                : <span>Total : {price} Bath.</span>
+                            }
+                        </Table.HeaderCell>
+                        <Table.HeaderCell >
                             {cart.length === 0 ? <Button floated='right' color='red' disabled size='small'>No Product</Button>
-                                : <Button floated='right' color='olive' size='small'>Check Out</Button>}
-
+                                : <Button floated='right' color='olive' size='small'>Check Out</Button>
+                            }
                         </Table.HeaderCell>
                     </Table.Row>
                 </Table.Footer>

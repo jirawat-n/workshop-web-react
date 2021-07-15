@@ -6,6 +6,7 @@ import ProductPageDetails from './components/page/ProductPageDetails';
 import CategoryDetailPage from './components/page/CategoryDetailPage';
 import CartPage from './components/page/CartPage';
 import All_users from './components/data/allUser';
+import SignIn2 from './components/authentication/Signin2';
 import Signin from './components/authentication/Signin2';
 import Login from './components/page/Login';
 import About from './components/page/About';
@@ -19,8 +20,8 @@ function App() {
         <Route path="/signin"><Signin /></Route>
         <Route exact path="/category"><CategoryPage /></Route>
         <Route path="/cart"><CartPage /></Route>
+        <Route path="/token"><SignIn2 /></Route>
         <Route exact path="/product"><ProductPage /></Route>
-        <Route path="/alluser"><All_users /></Route>
         <Route path="/product/:productId"><ProductPageDetails /></Route>
         <Route path="/login"><Login /></Route>
         <Route path="/category/:categoryId"><CategoryDetailPage /></Route>

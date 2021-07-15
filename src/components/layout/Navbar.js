@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { useHistory, Link } from "react-router-dom"
+import { useHistory } from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux'
 import { Menu, Icon, Button } from 'semantic-ui-react'
 import { setAuth } from '../actions/AuthActions'
@@ -39,12 +39,17 @@ function Navbar() {
                 active={Select === 'product'}
                 onClick={handleItemClick}
             />
+             <Menu.Item
+                name='token'
+                active={Select === 'token'}
+                onClick={handleItemClick}
+            />
             <Menu.Item
                 name='category'
                 active={Select === 'category'}
                 onClick={handleItemClick}
             />
-             <Menu.Item
+            <Menu.Item
                 name='alluser'
                 active={Select === 'alluser'}
                 onClick={handleItemClick}
