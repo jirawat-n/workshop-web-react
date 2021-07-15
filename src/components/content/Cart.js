@@ -1,11 +1,12 @@
 import React from 'react'
+import { DELETE_CART_REQ } from '../saga/actionTypes'
 import { Icon, Label, Button, Table, Image, Container } from 'semantic-ui-react'
 import { deleteCart } from '../actions/CartActions'
-import { useSelector } from 'react-redux'
-import { useDispatch } from 'react-redux'
-// สวัสดี
+import { useSelector, useDispatch } from 'react-redux'
+
 import '../assets/table.css'
 function TableCart() {
+    const action = (type, payload) => dispatch({ type, payload })
     const { cart } = useSelector(state => state.cart)
     const price = 0;
     console.log(cart)
@@ -43,14 +44,13 @@ function TableCart() {
                                     <Button.Content hidden>
                                         Delete
                                     </Button.Content>
-
                                 </Button>
-                                <Button color='green' animated onClick={() => dispatch(deleteCart(item.id))}>
-                                    <Button.Content visible> <Icon name='edit' /></Button.Content>
+                                <Button color='red' animated onClick={() => action(DELETE_CART_REQ, item.id)}>
+                                    <Button.Content visible>
+                                        <Icon name='delete' /></Button.Content>
                                     <Button.Content hidden>
-                                        Edit
+                                        Delete
                                     </Button.Content>
-
                                 </Button>
                             </Table.Cell>
                         </Table.Row>

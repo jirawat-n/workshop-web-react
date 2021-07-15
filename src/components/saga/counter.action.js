@@ -1,5 +1,5 @@
-import { put, delay} from 'redux-saga/effects'
-import { INCREMENT, DECREMENT, ADD} from '../actionTypes'
+import { put, delay } from 'redux-saga/effects'
+import { INCREMENT, DECREMENT, ADD, ADD_TO_CART, DELETE_CART } from '../saga/actionTypes'
 
 
 export function* setIncrementAction() {
@@ -15,6 +15,15 @@ export function* setDecrementAction() {
     yield put({ type: DECREMENT })
 }
 
-export function* setAddAction({payload}) {
+export function* setAddAction({ payload }) {
     yield put({ type: ADD, payload })
+}
+
+
+export function* setAddProductAction({ payload }) {
+    yield put({ type: ADD_TO_CART, payload })
+}
+
+export function* setDeleteProductAction({ payload }) {
+    yield put({ type: DELETE_CART, payload })
 }

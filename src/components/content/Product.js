@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { ADD_TO_CART_REQ } from '../saga/actionTypes'
 import { useHistory } from 'react-router'
 import { Card, Grid, Image, Button, Icon } from 'semantic-ui-react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { addToCart } from '../actions/CartActions'
 function Product() {
+    // ใช้ SAGA
+    const action = (type, payload) => dispatch({ type, payload })
+    const counterReducer = useSelector(({ counterReducer }) => counterReducer)
+
     const [Product, setProduct] = useState([])
     const dispatch = useDispatch();
     const detailhistory = useHistory();
@@ -42,6 +47,7 @@ function Product() {
                                                 <Icon name='shop' />
                                             </Button.Content>
                                         </Button>
+                                        <button onClick={() => action(ADD_TO_CART_REQ, { ...datas, quantity: 1 })}>Add</button>
                                     </Card.Description>
                                 </Card.Content>
                                 <Card.Content extra>
@@ -54,7 +60,7 @@ function Product() {
                 </Grid.Row>
             </Grid>
 
-        </div>
+        </div >
     )
 }
 export default Product

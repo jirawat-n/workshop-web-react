@@ -1,5 +1,4 @@
 import { startFetch, endFetch, errorFetch } from './StatusActions'
-import { signin } from '../data/user'
 import axios from 'axios'
 export const SET_AUTH = 'SET_AUTH'
 
@@ -33,7 +32,5 @@ export function fetchAuthAsync(username, password) {
             })
 
         // const user = await signin(username, password)
-
-
     }
 }
