@@ -2,9 +2,10 @@ import React, { useState } from 'react'
 import { useHistory } from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux'
 import { Menu, Icon, Button } from 'semantic-ui-react'
-import { setAuth } from '../actions/AuthActions'
+import { FETCH_AUTH_REQ } from '../saga/actionTypes'
 import { clearCart } from '../actions/CartActions'
 function Navbar() {
+    const action = (type, payload) => dispatch({ type, payload })
     const { cart } = useSelector((state) => state.cart)
     const { user } = useSelector(state => state.auth)
     const [Select, setSelect] = useState('home')
@@ -22,7 +23,6 @@ function Navbar() {
 
     }
     return (
-
         <Menu pointing>
             <Menu.Item
                 name='home'
@@ -39,7 +39,7 @@ function Navbar() {
                 active={Select === 'product'}
                 onClick={handleItemClick}
             />
-             <Menu.Item
+            <Menu.Item
                 name='token'
                 active={Select === 'token'}
                 onClick={handleItemClick}
@@ -68,9 +68,8 @@ function Navbar() {
                 <Menu.Item>
                     {user ?
                         <Button animated='fade' color="red" onClick={() => {
-                            detailhistory.push(`/login`)
-                            dispatch(setAuth(null))
-                            dispatch(clearCart())
+                            localStorage.clear();
+                            window.location.reload();
                         }
                         }>
                             <Button.Content visible><Icon name="sign out" /></Button.Content>

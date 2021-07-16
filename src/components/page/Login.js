@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { fetchAuthAsync } from '../actions/AuthActions'
+import { FETCH_AUTH_REQ } from '../saga/actionTypes'
 import { Loader } from 'semantic-ui-react'
 import { useHistory } from 'react-router'
 import { Button, Form, Container } from 'semantic-ui-react'
 export default function Login() {
+    const action = (type, payload) => dispatch({ type, payload })
     const [username, setUsername] = useState('')
     const history = useHistory();
     const [password, setPassword] = useState('')
@@ -24,9 +26,9 @@ export default function Login() {
                     </Form.Field>
                     <Form.Field>
                         <label>Password</label>
-                        <input type="password" name='password'  value={password} required onChange={e => setPassword(e.target.value)} />
+                        <input type="password" name='password' value={password} required onChange={e => setPassword(e.target.value)} />
                     </Form.Field>
-                    <Button onClick={() => dispatch(fetchAuthAsync(username, password))}>
+                    <Button onClick={() => action(FETCH_AUTH_REQ, { username, password })}>
                         {loading ? <Loader active inline /> : 'Submit'}
                     </Button>
                     {error && <p style={{ color: 'red', fontSize: '12px' }}>{error.msg}</p>}
