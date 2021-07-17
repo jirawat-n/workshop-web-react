@@ -1,9 +1,12 @@
 // import { ADD_TO_CART, DELETE_CART } from '../actions/CartActions'
 import { ADD_TO_CART, DELETE_CART } from '../actions/CartActions'
+import { ADD_TO_STORE } from '../saga/actionTypes'
 const initialState = {
     cart: [],
 }
 
+
+// Store ของ Redux
 export function cartReducer(state = initialState, action) {
     switch (action.type) {
         case ADD_TO_CART:
@@ -21,6 +24,12 @@ export function cartReducer(state = initialState, action) {
                 ...state,
                 cart: updatedCart,
 
+            }
+        case ADD_TO_STORE:
+            console.log('action ของ เปโหลด', action.payload);
+            return {
+                ...state,
+                cart: action.payload,
             }
 
         case DELETE_CART:

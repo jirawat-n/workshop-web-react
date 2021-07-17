@@ -5,7 +5,7 @@ import { FETCH_AUTH_REQ } from '../saga/actionTypes'
 import { Loader } from 'semantic-ui-react'
 import { useHistory } from 'react-router'
 import { Button, Form, Container } from 'semantic-ui-react'
-export default function Login() {
+export default function Login(props) {
     const action = (type, payload) => dispatch({ type, payload })
     const [username, setUsername] = useState('')
     const history = useHistory();

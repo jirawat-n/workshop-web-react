@@ -8,7 +8,6 @@ import '../assets/table.css'
 function TableCart() {
     const action = (type, payload) => dispatch({ type, payload })
     const { cart } = useSelector(state => state.cart)
-    const price = 0;
     console.log(cart)
     const dispatch = useDispatch();
     return (
@@ -31,12 +30,12 @@ function TableCart() {
                             <Table.Cell >
                                 <Label ribbon>{item.id}</Label>
                             </Table.Cell>
-                            <Table.Cell>{item.name}</Table.Cell>
+                            <Table.Cell>{item.product}</Table.Cell>
                             <Table.Cell width={4}>
-                                <Image centered src={item.image.thumbnail} />
+                                {/* <Image centered src={item.image.thumbnail} /> */}
                             </Table.Cell>
                             <Table.Cell style={{ textAlign: "center" }}>{item.quantity}</Table.Cell>
-                            <Table.Cell style={{ textAlign: "center" }}>{item.price * item.quantity}</Table.Cell>
+                            <Table.Cell style={{ textAlign: "center" }}>{item.total * item.quantity }</Table.Cell>
                             <Table.Cell style={{ textAlign: "center" }} >
                                 <Button color='red' animated onClick={() => dispatch(deleteCart(item.id))}>
                                     <Button.Content visible>
@@ -57,7 +56,7 @@ function TableCart() {
                     </Table.Body>
 
                 )}
-                <Table.Footer fullWidth>
+                {/* <Table.Footer fullWidth>
                     <Table.Row>
                         <Table.HeaderCell colSpan='4'>
                         </Table.HeaderCell>
@@ -72,7 +71,7 @@ function TableCart() {
                             }
                         </Table.HeaderCell>
                     </Table.Row>
-                </Table.Footer>
+                </Table.Footer> */}
             </Table >
         </Container>
     )

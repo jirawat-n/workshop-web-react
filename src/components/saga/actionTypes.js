@@ -30,3 +30,11 @@ export const FETCH_ERROR_REQ = 'FETCH_ERROR_REQ';
 export const FETCH_AUTH = 'FETCH_AUTH'
 export const FETCH_AUTH_REQ = 'FETCH_AUTH_REQ'
 
+export const ADD_PRODUCT_AND_AUTH = 'ADD_PRODUCT_AND_AUTH'
+export const ADD_PRODUCT_AND_AUTH_REQ = 'ADD_PRODUCT_AND_AUTH_REQ'
+
+export const FETCH_CART = 'FETCH_CART'
+export const FETCH_CART_REQ = 'FETCH_CART_REQ'
+
+export const ADD_TO_STORE = 'ADD_TO_STORE'
+export const ADD_TO_STORE_REQ = 'ADD_TO_STORE_REQ'
