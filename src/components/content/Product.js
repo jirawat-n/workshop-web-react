@@ -6,6 +6,7 @@ import { Card, Grid, Image, Button, Loader, Icon, Breadcrumb, Container } from '
 import { useDispatch, useSelector } from 'react-redux'
 import Pagination_Foot from '../layout/Pagination'
 import Sort from '../layout/Sort'
+import '../assets/home.css'
 function Product() {
     // ใช้ SAGA
     const action = (type, payload, token) => dispatch({ type, payload, token })
@@ -46,7 +47,7 @@ function Product() {
                 </Grid.Column>
             </Grid>
             {Product.length === 0 ?
-                <div style={{ "height": "1080px" }}>
+                <div className="loader-p">
                     <Loader active inline='centered' size='massive' />
                 </div> :
                 <Grid style={{ marginTop: '2em' }}>

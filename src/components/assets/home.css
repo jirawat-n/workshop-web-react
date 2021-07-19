@@ -1,3 +1,11 @@
 .loader-h {
-    height: 5000px;
+    height: 100px;
+    margin-top: 50px;
+    z-index: -999;
+}
+
+.loader-p {
+    height: 50vh;
+    margin-top: 150px;
+    z-index: -999;
 }
