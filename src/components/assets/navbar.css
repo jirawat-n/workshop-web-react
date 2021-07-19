@@ -1,0 +1,11 @@
+.header-nav {
+    margin-bottom: 85px;
+}
+
+.navbar-nav{
+    height: 60px;
+    box-shadow: 5px 10px red;
+}
+.footer-nav {
+    margin-bottom: 300px;
+}

@@ -1,10 +1,9 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchAuthAsync } from '../actions/AuthActions'
 import { FETCH_AUTH_REQ } from '../saga/actionTypes'
-import { Loader } from 'semantic-ui-react'
+import { Loader, Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import { useHistory } from 'react-router'
-import { Button, Form, Container } from 'semantic-ui-react'
+import '../assets/navbar.css'
 export default function Login(props) {
     const action = (type, payload) => dispatch({ type, payload })
     const [username, setUsername] = useState('')
@@ -18,22 +17,34 @@ export default function Login(props) {
     }
     return (
         <div className='form'>
-            <Container>
-                <Form>
-                    <Form.Field>
-                        <label>Username</label>
-                        <input type="text" name='username' value={username} required onChange={e => setUsername(e.target.value)} />
-                    </Form.Field>
-                    <Form.Field>
-                        <label>Password</label>
-                        <input type="password" name='password' value={password} required onChange={e => setPassword(e.target.value)} />
-                    </Form.Field>
-                    <Button onClick={() => action(FETCH_AUTH_REQ, { username, password })}>
-                        {loading ? <Loader active inline /> : 'Submit'}
-                    </Button>
-                    {error && <p style={{ color: 'red', fontSize: '12px' }}>{error.msg}</p>}
-                </Form>
-            </Container>
+            <Grid textAlign='center' style={{ height: '40vh' }} verticalAlign='middle'>
+                <Grid.Column style={{ maxWidth: 450 }}>
+                    <Header as='h2' color='teal' textAlign='center'>
+                        <Image src='/logo.png' /> Log-in to your account
+                    </Header>
+                    <Form size='large'>
+                        <Segment stacked>
+                            <Form.Input fluid icon='user' value={username} required onChange={e => setUsername(e.target.value)} iconPosition='left' placeholder='Username' />
+                            <Form.Input
+                                fluid
+                                icon='lock'
+                                iconPosition='left'
+                                placeholder='Password'
+                                type='password'
+                                name='password' value={password} required onChange={e => setPassword(e.target.value)}
+                            />
+                            <Button onClick={() => action(FETCH_AUTH_REQ, { username, password })} color='teal' fluid size='large'>
+                                {loading ? <Loader active inline /> : 'Submit'}
+                            </Button>
+                            {error && <p style={{ color: 'red', fontSize: '12px' }}>{error.msg}</p>}
+                        </Segment>
+                    </Form>
+                    <Message>
+                        New to us? <a href='#'>Sign Up</a>
+                    </Message>
+                </Grid.Column>
+            </Grid>
+            <div className="footer-nav"></div>
         </div>
     )
 }

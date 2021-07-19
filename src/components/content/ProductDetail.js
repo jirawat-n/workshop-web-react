@@ -1,13 +1,23 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
+import { ADD_PRODUCT_AND_AUTH_REQ } from '../saga/actionTypes'
 import { useParams } from 'react-router'
-import { Grid, Image, } from 'semantic-ui-react'
+import { useHistory } from 'react-router'
+import { Grid, Button, Icon, Image, } from 'semantic-ui-react'
+import { useDispatch, useSelector } from 'react-redux'
+import '../assets/navbar.css'
 function ProductDetail() {
     const [Product, setProduct] = useState([])
+    const dispatch = useDispatch();
+    const detailhistory = useHistory();
+    const action = (type, payload, token) => dispatch({ type, payload, token })
     const { productId } = useParams();
+    const { user } = useSelector(state => state.auth)
     useEffect(() => {
         axios.get(`http://127.0.0.1:8000/product/${productId}/`)
             .then(data => {
+                const title = data.data.data.name
+                document.title = "Product :" + " " + title
                 const res = data.data
                 setProduct(res)
                 console.log(res)
@@ -20,18 +30,34 @@ function ProductDetail() {
             <div>
             </div>
         )
-
     }
-
     return (
         <div>
             <Grid>
-                <Grid.Row columns={1} centered>
-                    <Image src={Product.data.image.medium_square_crop} />
-                    <p>{Product.data.name}</p>
-                    <p>{Product.data.price}</p>
-                </Grid.Row>
+                <Grid.Column width={10}>
+                    <Image centered src={Product.data.image.full_size} /><br></br>
+                </Grid.Column>
+                <Grid.Column width={3}>
+                    <p >{Product.data.name}</p>
+                    <p >{Product.data.name}</p>
+                    <p >{Product.data.name}</p>
+                </Grid.Column>
+                <Grid.Column width={3}>
+                    <p >{Product.data.price}</p>
+                    {user ?
+
+                        <Button floated='right' onClick={() => action(ADD_PRODUCT_AND_AUTH_REQ, { ...Product.data.id, quantity: 1 }, user.data.access)}>Add Cart</Button>
+                        :
+                        <Button floated='right' animated='fade' messages="Please Login" onClick={() => detailhistory.push(`/login`)}>
+                            <Button.Content hidden>Add Cart</Button.Content>
+                            <Button.Content visible>
+                                <Icon name='shop' />
+                            </Button.Content>
+                        </Button>
+                    }
+                </Grid.Column>
             </Grid>
+            <div className="footer-nav"></div>
         </div>
     )
 }

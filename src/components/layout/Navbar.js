@@ -1,17 +1,16 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from 'axios'
 import { useHistory } from "react-router-dom"
 import { useSelector, useDispatch } from 'react-redux'
-import { Menu, Icon, Button } from 'semantic-ui-react'
-import { FETCH_AUTH_REQ } from '../saga/actionTypes'
-import { clearCart } from '../actions/CartActions'
+import { Menu, Icon, Button, Dropdown, Input, Grid, Image, Container } from 'semantic-ui-react'
+import '../assets/navbar.css'
 function Navbar() {
-    const action = (type, payload) => dispatch({ type, payload })
-    const { cart } = useSelector((state) => state.cart)
     const { user } = useSelector(state => state.auth)
+    const { cart } = useSelector((state) => state.cart)
     const [Select, setSelect] = useState('home')
     const history = useHistory();
-    const dispatch = useDispatch()
     const detailhistory = useHistory();
+
     const handleItemClick = (event) => {
         const selected = event.target.textContent;
         setSelect(selected)
@@ -22,67 +21,76 @@ function Navbar() {
         history.push(`/${selected}/`)
 
     }
+    const [Product, setProduct] = useState([])
+    useEffect(() => {
+        axios.get('http://127.0.0.1:8000/category/?is_enabled=true/')
+            .then(data => {
+                const res = data.data.data.results
+                setProduct(res)
+            })
+    }, [])
     return (
-        <Menu pointing>
-            <Menu.Item
-                name='home'
-                active={Select === 'home'}
-                onClick={handleItemClick}
-            />
-            <Menu.Item
-                name='about'
-                active={Select === 'about'}
-                onClick={handleItemClick}
-            />
-            <Menu.Item
-                name='product'
-                active={Select === 'product'}
-                onClick={handleItemClick}
-            />
-            <Menu.Item
-                name='token'
-                active={Select === 'token'}
-                onClick={handleItemClick}
-            />
-            <Menu.Item
-                name='category'
-                active={Select === 'category'}
-                onClick={handleItemClick}
-            />
-            <Menu.Item
-                name='alluser'
-                active={Select === 'alluser'}
-                onClick={handleItemClick}
-            />
-            <Menu.Menu position='right'>
-            </Menu.Menu>
-            <Menu.Menu position='right'>
-                {user &&
-                    <Menu.Item onClick={() => detailhistory.push(`/Cart/`)}>
-                        <Icon name="cart" color="black" />{' '}
-                        <span color="black">
-                            {cart.reduce((sum, item) => sum + item.quantity, 0)}
-                        </span>
-                    </Menu.Item>
-                }
-                <Menu.Item>
-                    {user ?
-                        <Button animated='fade' color="red" onClick={() => {
-                            localStorage.clear();
-                            window.location.reload();
+        <div>
+            <Menu fixed='top' className="navbar-nav" inverted>
+                <Container>
+                    <Menu.Item
+                        name='home'
+                        active={Select === 'home'}
+                        onClick={handleItemClick}
+                    />
+                    <Menu.Item
+                        name='product'
+                        active={Select === 'product'}
+                        onClick={handleItemClick}
+                    />
+                    <Dropdown text='Shopping' pointing className='link item'>
+                        <Dropdown.Menu>
+                            <Dropdown.Header>Categories</Dropdown.Header>
+                            {Product.map(datas => (
+                                <Dropdown.Item key={datas.id} onClick={() => detailhistory.push(`/category/${datas.id}/`)}>{datas.name}</Dropdown.Item>
+                            )
+                            )}
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    <Menu.Menu position='right'>
+                        <Menu.Item>
+                            <Input icon='search' placeholder='Search...' />
+                        </Menu.Item>
+                        {user &&
+                            <Menu.Item onClick={() => detailhistory.push(`/Cart/`)}>
+                                <Icon name="cart" color="white" />{' '}
+                                <span color="black">
+                                    {cart.reduce((sum, item) => sum + item.quantity, 0)}
+                                </span>
+                            </Menu.Item>
                         }
-                        }>
-                            <Button.Content visible><Icon name="sign out" /></Button.Content>
-                            <Button.Content hidden>Sign Out</Button.Content>
-                        </Button>
-                        :
-                        <Button animated='fade' primary onClick={() => detailhistory.push(`/login`)}>
-                            <Button.Content visible><Icon name="sign in" /></Button.Content>
-                            <Button.Content hidden>Sign in</Button.Content>
-                        </Button>}
-                </Menu.Item>
-            </Menu.Menu>
-        </Menu>
+                        <Menu.Item>
+                            {user ?
+                                <h4>{user.data.user}</h4>
+                                :
+                                <h4>Welcome</h4>
+                            }
+                        </Menu.Item>
+                        <Menu.Item>
+                            {user ?
+                                <Button animated='fade' color="red" onClick={() => {
+                                    localStorage.clear();
+                                    window.location.reload();
+                                }
+                                }>
+                                    <Button.Content visible><Icon name="sign out" /></Button.Content>
+                                    <Button.Content hidden>Sign Out</Button.Content>
+                                </Button>
+                                :
+                                <Button animated='fade' primary onClick={() => detailhistory.push(`/login`)}>
+                                    <Button.Content visible><Icon name="sign in" /></Button.Content>
+                                    <Button.Content hidden>Sign in</Button.Content>
+                                </Button>}
+                        </Menu.Item>
+                    </Menu.Menu>
+                </Container>
+            </Menu >
+        </div>
     )
 }
 

@@ -16,7 +16,7 @@ function ProductPage() {
                         <Product />
                     </Grid.Column>
                     <Grid.Column width={3}>
-                        <h2>This is Product Page</h2>
+
                     </Grid.Column>
                 </Grid.Row>
             </Grid>

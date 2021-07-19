@@ -1,4 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
+import './components/assets/navbar.css'
 import Navbar from './components/layout/Navbar';
 import ProductPage from './components/page/ProductPage';
 import CategoryPage from './components/page/CategoryPage';
@@ -9,12 +10,15 @@ import SignIn2 from './components/authentication/Signin2';
 import Signin from './components/authentication/Signin2';
 import Login from './components/page/Login';
 import About from './components/page/About';
+import Footer from './components/layout/Footer';
+import HomePage from './components/page/HomePage';
 function App() {
    return (
       <div className="App">
          <Navbar />
-         <Switch>
-            <Route exact path="/"><ProductPage /></Route>
+         <div className="header-nav"></div>
+         <Switch >
+            <Route exact path="/"><HomePage /></Route>
             <Route path="/about"><About /></Route>
             <Route path="/signin"><Signin /></Route>
             <Route exact path="/category"><CategoryPage /></Route>
@@ -28,6 +32,7 @@ function App() {
                <h1>404 PAGE NOT FOUND</h1>
             </Route>
          </Switch>
+         <Footer />
       </div>
    );
 }
