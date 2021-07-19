@@ -35,7 +35,7 @@ function ProductHome() {
     return (
         <div>
             {Product.length === 0 ?
-                <div className="loader-h">
+                <div className="loader-h" >
                     <Loader active inline='centered' size='massive' />
                 </div> :
                 <Grid>

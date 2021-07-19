@@ -1,11 +1,12 @@
 .loader-h {
-    height: 100px;
+    height    : 50vh;
+    height    : 100px;
     margin-top: 50px;
-    z-index: -999;
+    z-index   : -999;
 }
 
 .loader-p {
-    height: 50vh;
+    height    : 48vh;
     margin-top: 150px;
-    z-index: -999;
+    z-index   : -999;
 }

@@ -8,7 +8,7 @@ import '../assets/table.css'
 function TableCart() {
     const action = (type, payload) => dispatch({ type, payload })
     const { cart } = useSelector(state => state.cart)
-    console.log(cart)
+    console.log('กา',cart)
     const dispatch = useDispatch();
     return (
         <Container>
