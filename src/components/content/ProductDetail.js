@@ -48,11 +48,11 @@ function ProductDetail() {
 
                 </Grid.Column>
             </Grid>
-            {Product.data ===0 ?
-                <div className="loader-pd">
+            {Product.data === 0 ?
+                <div style="loader-pds">
                     <Loader active inline='centered' size='massive' />
                 </div> :
-                <div className="detail-p">
+                <div className="detail-p ">
                     <Grid>
                         <Grid.Column width={10}>
                             <Image centered src={Product.data.image.full_size} /><br></br>
@@ -66,7 +66,7 @@ function ProductDetail() {
                             <p >{Product.data.price}</p>
                             {user ?
 
-                                <Button floated='right' onClick={() => action(ADD_PRODUCT_AND_AUTH_REQ, { ...Product.data.id, quantity: 1 }, user.data.access)}>Add Cart</Button>
+                                <Button floated='right' onClick={() => action(ADD_PRODUCT_AND_AUTH_REQ, { ...Product.data, quantity: 1 }, user.data.access)}>Add Cart</Button>
                                 :
                                 <Button floated='right' animated='fade' messages="Please Login" onClick={() => detailhistory.push(`/login`)}>
                                     <Button.Content hidden>Add Cart</Button.Content>

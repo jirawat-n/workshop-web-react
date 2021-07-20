@@ -28,7 +28,7 @@ const FetchCart = async (token) => {
 }
 
 export function* fetchCartStoreAsync({ token }) {
-    // console.log('โทเค่นหน้าดูสินค้า', token);
+    console.log('โทเค่นหน้าดูสินค้า', token);
     try {
         yield put({ type: FETCH_START_REQ })
         let response = yield call(FetchCart, token)

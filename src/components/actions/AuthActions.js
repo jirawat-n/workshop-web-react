@@ -28,11 +28,11 @@ export function* fetchAuthAsync({ payload }) {
     try {
         yield put({ type: FETCH_START_REQ })
         const user = yield call(FetchUser, payload)
-        console.log(user.data.access);
+        // console.log(user.data.access);
         yield put({ type: SET_AUTH_REQ, payload: user })
         yield put({ type: FETCH_ERROR_REQ, payload: null })
         yield put({ type: FETCH_END_REQ })
-        // yield put({ type: FETCH_CART_REQ, payload: user.data.access })
+        yield put({ type: FETCH_CART_REQ, token: user.data.access })
 
     }
     catch (error) {

@@ -66,7 +66,7 @@ function Navbar() {
                         }
                         <Menu.Item>
                             {user ?
-                                <h4>{user.data.user}</h4>
+                                <h4>Welcome,{user.data.user}</h4>
                                 :
                                 <h4>Welcome</h4>
                             }
