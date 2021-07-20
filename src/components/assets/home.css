@@ -1,12 +1,28 @@
 .loader-h {
     height    : 50vh;
     height    : 100px;
-    margin-top: 50px;
+    margin-top: 20vh;
     z-index   : -999;
 }
 
 .loader-p {
-    height    : 48vh;
-    margin-top: 150px;
+    height    : 50vh;
+    margin-top: 70vh;
     z-index   : -999;
+}
+
+.loader-pd {
+    height    : 5000vh;
+    margin-top: 30vh;
+    z-index   : -999;
+}
+
+.loader-r {
+    height    : 50vh;
+    margin-top: 40vh;
+    z-index   : -999;
+}
+
+.detail-p {
+    height    : 35vh;
 }

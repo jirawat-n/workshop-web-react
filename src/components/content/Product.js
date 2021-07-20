@@ -5,6 +5,7 @@ import { useHistory } from 'react-router'
 import { Card, Grid, Image, Button, Loader, Icon, Breadcrumb, Container } from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux'
 import Pagination_Foot from '../layout/Pagination'
+import Breadcumb from '../layout/Breadcumb'
 import Sort from '../layout/Sort'
 import '../assets/home.css'
 function Product() {
@@ -29,15 +30,7 @@ function Product() {
             <h1 text>Product</h1>
             <Grid columns='equal'>
                 <Grid.Column width={5}>
-                    <Breadcrumb size='large'>
-                        <Breadcrumb.Section link>Home</Breadcrumb.Section>
-                        <Breadcrumb.Divider />
-                        <Breadcrumb.Section link>Store</Breadcrumb.Section>
-                        <Breadcrumb.Divider icon='right angle' />
-                        <Breadcrumb.Section active>
-                            Search for: <a href='#'>paper towels</a>
-                        </Breadcrumb.Section>
-                    </Breadcrumb>
+                    <Breadcumb />
                 </Grid.Column>
                 <Grid.Column width={8}>
 

@@ -5,6 +5,7 @@ import { useHistory } from 'react-router'
 import { Card, Grid, Image, Button, Icon, Loader, Dimmer, Segment } from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux'
 import Pagination_Foot from '../layout/Pagination'
+import '../assets/home.css'
 function ProductHomeRec() {
     // ใช้ SAGA
     const action = (type, payload, token) => dispatch({ type, payload, token })
@@ -31,7 +32,7 @@ function ProductHomeRec() {
     return (
         <div>
             {Product.length === 0 ?
-                <div style={{ marginTop: '25em' }}>
+                <div className="loader-r">
                     <Loader active inline='centered' size='massive' />
                 </div> :
                 <Grid text style={{ marginTop: '1em' }}>

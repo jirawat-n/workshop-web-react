@@ -10,7 +10,7 @@ function Navbar() {
     const [Select, setSelect] = useState('home')
     const history = useHistory();
     const detailhistory = useHistory();
-console.log(cart);
+    console.log('คาท', cart);
     const handleItemClick = (event) => {
         const selected = event.target.textContent;
         setSelect(selected)
