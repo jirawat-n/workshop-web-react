@@ -1,16 +1,15 @@
 import React from 'react'
+import { Link,useHistory } from 'react-router-dom'
 import { Breadcrumb } from 'semantic-ui-react'
 export default function Breadcumb() {
+    const history = useHistory();
     return (
         <div>
             <Breadcrumb size='large'>
-                <Breadcrumb.Section link>Home</Breadcrumb.Section>
+                <Breadcrumb.Section><Link to="/">Home</Link></Breadcrumb.Section>
                 <Breadcrumb.Divider />
-                <Breadcrumb.Section link>Store</Breadcrumb.Section>
                 <Breadcrumb.Divider icon='right angle' />
-                <Breadcrumb.Section active>
-                    Search for: <a href='#'>paper towels</a>
-                </Breadcrumb.Section>
+                <Breadcrumb.Section active>Product</Breadcrumb.Section>
             </Breadcrumb>
         </div>
     )

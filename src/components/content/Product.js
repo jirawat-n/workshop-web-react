@@ -43,7 +43,7 @@ function Product() {
                 <div className="loader-p">
                     <Loader active inline='centered' size='massive' />
                 </div> :
-                <Grid style={{ marginTop: '2em' }}>
+                <Grid>
                     <Grid.Row columns={3}>
                         {Product.map(datas => (
                             <Grid.Column key={datas.id}>

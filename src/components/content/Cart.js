@@ -1,9 +1,9 @@
 import React from 'react'
 import { DELETE_PRODUCT_AND_AUTH_REQ } from '../saga/actionTypes'
-import { Icon, Label, Button, Table, Image, Container } from 'semantic-ui-react'
+import { Icon, Label, Button, Table, Breadcrumb, Container } from 'semantic-ui-react'
 import { deleteCart } from '../actions/CartActions'
 import { useSelector, useDispatch } from 'react-redux'
-
+import Breadcumb from '../layout/Breadcumb'
 import '../assets/table.css'
 import '../assets/home.css'
 function TableCart() {
@@ -13,16 +13,19 @@ function TableCart() {
     console.log('สินค้าทั้งหมด', cart)
     const dispatch = useDispatch();
     return (
+
         <Container className="cart-p">
+            <Breadcumb />
+            <br></br>
             <Table celled>
                 <Table.Header>
                     <Table.Row style={{ textAlign: "center" }}>
                         <Table.HeaderCell width={1}>Number</Table.HeaderCell>
                         <Table.HeaderCell width={2}>Product</Table.HeaderCell>
-                        <Table.HeaderCell width={4}>image</Table.HeaderCell>
+                        <Table.HeaderCell width={3}>image</Table.HeaderCell>
                         <Table.HeaderCell width={2}>Quantity</Table.HeaderCell>
                         <Table.HeaderCell width={2}>Price</Table.HeaderCell>
-                        <Table.HeaderCell width={2}>Manage</Table.HeaderCell>
+                        <Table.HeaderCell colSpan={2} >Manage</Table.HeaderCell>
                     </Table.Row>
                 </Table.Header>
 
@@ -37,15 +40,15 @@ function TableCart() {
                                 {/* <Image centered src={item.image.thumbnail} /> */}
                             </Table.Cell>
                             <Table.Cell style={{ textAlign: "center" }}>{item.quantity}</Table.Cell>
-                            <Table.Cell style={{ textAlign: "center" }}>{item.total * item.quantity}</Table.Cell>
-                            <Table.Cell style={{ textAlign: "center" }} >
-                                {/* <Button color='red' animated onClick={() => dispatch(deleteCart(item.id))}>
-                                    <Button.Content visible>
-                                        <Icon name='delete' /></Button.Content>
-                                    <Button.Content hidden>
-                                        Redux Delete
-                                    </Button.Content>
-                                </Button> */}
+                            <Table.Cell style={{ textAlign: "center" }}>{item.total * item.quantity / item.quantity}</Table.Cell>
+                            <Table.Cell style={{ textAlign: "center" }} width={3}>
+                                <Button.Group>
+                                    <Button negative>-</Button>
+                                    <Button.Or />
+                                    <Button positive>+</Button>
+                                </Button.Group>
+                            </Table.Cell>
+                            <Table.Cell style={{ textAlign: "center" }} width={3}>
                                 <Button color='red' animated onClick={() => action(DELETE_PRODUCT_AND_AUTH_REQ, item.id, user.data.access)}>
                                     <Button.Content visible>
                                         <Icon name='delete' /></Button.Content>
@@ -64,11 +67,11 @@ function TableCart() {
                         </Table.HeaderCell>
                         <Table.HeaderCell style={{ textAlign: 'center' }}>
                             {cart.length === 0 ? <div></div>
-                                : <span> {cart.reduce((sum, item) => sum + (item.total * item.quantity), 0)} Bath.</span>
+                                : <span> {cart.reduce((sum, item) => sum + (item.total * item.quantity / item.quantity), 0)} Bath.</span>
                             }
                         </Table.HeaderCell>
-                        <Table.HeaderCell style={{ textAlign: 'center' }}>
-                            {cart.length === 0 ? <Button floated='right' color='red' disabled size='small'>No Product</Button>
+                        <Table.HeaderCell style={{ textAlign: 'right' }} colSpan='2'>
+                            {cart.length === 0 ? <div></div>
                                 : <Button color='olive' size='small'>Check Out</Button>
                             }
                         </Table.HeaderCell>
