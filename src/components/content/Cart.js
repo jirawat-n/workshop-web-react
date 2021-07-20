@@ -1,17 +1,19 @@
 import React from 'react'
-import { DELETE_CART_REQ } from '../saga/actionTypes'
+import { DELETE_PRODUCT_AND_AUTH_REQ } from '../saga/actionTypes'
 import { Icon, Label, Button, Table, Image, Container } from 'semantic-ui-react'
 import { deleteCart } from '../actions/CartActions'
 import { useSelector, useDispatch } from 'react-redux'
 
 import '../assets/table.css'
+import '../assets/home.css'
 function TableCart() {
-    const action = (type, payload) => dispatch({ type, payload })
+    const action = (type, payload, token) => dispatch({ type, payload, token })
     const { cart } = useSelector(state => state.cart)
-    console.log('กา',cart)
+    const { user } = useSelector(state => state.auth)
+    console.log('สินค้าทั้งหมด', cart)
     const dispatch = useDispatch();
     return (
-        <Container>
+        <Container className="cart-p">
             <Table celled>
                 <Table.Header>
                     <Table.Row style={{ textAlign: "center" }}>
@@ -35,20 +37,20 @@ function TableCart() {
                                 {/* <Image centered src={item.image.thumbnail} /> */}
                             </Table.Cell>
                             <Table.Cell style={{ textAlign: "center" }}>{item.quantity}</Table.Cell>
-                            <Table.Cell style={{ textAlign: "center" }}>{item.total * item.quantity }</Table.Cell>
+                            <Table.Cell style={{ textAlign: "center" }}>{item.total * item.quantity}</Table.Cell>
                             <Table.Cell style={{ textAlign: "center" }} >
-                                <Button color='red' animated onClick={() => dispatch(deleteCart(item.id))}>
+                                {/* <Button color='red' animated onClick={() => dispatch(deleteCart(item.id))}>
                                     <Button.Content visible>
                                         <Icon name='delete' /></Button.Content>
                                     <Button.Content hidden>
                                         Redux Delete
                                     </Button.Content>
-                                </Button>
-                                <Button color='red' animated onClick={() => action(DELETE_CART_REQ, item.id)}>
+                                </Button> */}
+                                <Button color='red' animated onClick={() => action(DELETE_PRODUCT_AND_AUTH_REQ, item.id, user.data.access)}>
                                     <Button.Content visible>
                                         <Icon name='delete' /></Button.Content>
                                     <Button.Content hidden>
-                                        Saga Delete
+                                        Delete
                                     </Button.Content>
                                 </Button>
                             </Table.Cell>
@@ -56,22 +58,22 @@ function TableCart() {
                     </Table.Body>
 
                 )}
-                {/* <Table.Footer fullWidth>
+                <Table.Footer fullWidth>
                     <Table.Row>
                         <Table.HeaderCell colSpan='4'>
                         </Table.HeaderCell>
                         <Table.HeaderCell style={{ textAlign: 'center' }}>
                             {cart.length === 0 ? <div></div>
-                                : <span> {cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)} Bath.</span>
+                                : <span> {cart.reduce((sum, item) => sum + (item.total * item.quantity), 0)} Bath.</span>
                             }
                         </Table.HeaderCell>
-                        <Table.HeaderCell >
+                        <Table.HeaderCell style={{ textAlign: 'center' }}>
                             {cart.length === 0 ? <Button floated='right' color='red' disabled size='small'>No Product</Button>
-                                : <Button floated='right' color='olive' size='small'>Check Out</Button>
+                                : <Button color='olive' size='small'>Check Out</Button>
                             }
                         </Table.HeaderCell>
                     </Table.Row>
-                </Table.Footer> */}
+                </Table.Footer>
             </Table >
         </Container>
     )

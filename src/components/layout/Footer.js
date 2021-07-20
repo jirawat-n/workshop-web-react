@@ -1,4 +1,5 @@
 import React from 'react'
+import '../assets/footer.css'
 import {
     Container,
     Divider,
@@ -13,7 +14,7 @@ import {
 
 function Footer() {
     return (
-        <Segment fixed='bottom' inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
+        <Segment className="footer-fixed" inverted vertical style={{ margin: '5em 0em 0em', padding: '5em 0em' }}>
             <Container textAlign='center'>
                 <Grid divided inverted stackable>
                     <Grid.Column width={3}>
@@ -46,7 +47,7 @@ function Footer() {
                     <Grid.Column width={7}>
                         <Header inverted as='h4' content='License' />
                         <p>
-                        Copyright © 2021 Intelligent Bytes Co., Ltd. All Rights Reserved.
+                            Copyright © 2021 Intelligent Bytes Co., Ltd. All Rights Reserved.
                         </p>
                     </Grid.Column>
                 </Grid>

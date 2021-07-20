@@ -48,7 +48,7 @@ function ProductDetail() {
 
                 </Grid.Column>
             </Grid>
-            {Product.data ?
+            {Product.data ===0 ?
                 <div className="loader-pd">
                     <Loader active inline='centered' size='massive' />
                 </div> :

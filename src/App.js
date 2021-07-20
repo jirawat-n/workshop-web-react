@@ -1,5 +1,6 @@
 import { Route, Switch } from 'react-router-dom';
 import './components/assets/navbar.css'
+import './components/assets/home.css'
 import Navbar from './components/layout/Navbar';
 import ProductPage from './components/page/ProductPage';
 import CategoryPage from './components/page/CategoryPage';
@@ -38,7 +39,7 @@ function App() {
                </Switch>
             </CSSTransition>
          </TransitionGroup>
-         <Footer />
+         <Footer className="Footer" />
       </div>
    );
 }

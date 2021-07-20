@@ -1,28 +1,39 @@
 .loader-h {
-    height    : 50vh;
-    height    : 100px;
+    height: 50vh;
+    height: 100px;
     margin-top: 20vh;
-    z-index   : -999;
+    z-index: -999;
 }
 
 .loader-p {
-    height    : 50vh;
+    height: 50vh;
     margin-top: 70vh;
-    z-index   : -999;
+    z-index: -999;
 }
 
 .loader-pd {
-    height    : 5000vh;
-    margin-top: 30vh;
-    z-index   : -999;
+    height: 50vh;
+    margin-top: 35vh;
+    z-index: -999;
 }
 
 .loader-r {
-    height    : 50vh;
+    height: 50vh;
     margin-top: 40vh;
-    z-index   : -999;
+    z-index: -999;
 }
 
 .detail-p {
-    height    : 35vh;
+    height: 35vh;
+}
+
+.cart-p {
+    height: 60vh;
+}
+
+.Footer {
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    height: 35px;
 }

@@ -10,25 +10,29 @@ export function* setAuth(payload) {
     })
 }
 
-const FetchUser = (payload => {
+const FetchUser = async (payload) => {
     try {
-        const auth = axios.post(`http://127.0.0.1:8000/api/token/`, payload)
+        const auth = await axios.post(`http://127.0.0.1:8000/api/token/`, payload)
+        // console.log('อออออ', auth.data.access);
         return auth
     }
+    // console.log(auth);
     catch (error) {
         console.log(error)
     }
-})
+}
 
 
 export function* fetchAuthAsync({ payload }) {
-    console.log(payload);
+    console.log('auth', payload);
     try {
         yield put({ type: FETCH_START_REQ })
         const user = yield call(FetchUser, payload)
+        console.log(user.data.access);
         yield put({ type: SET_AUTH_REQ, payload: user })
         yield put({ type: FETCH_ERROR_REQ, payload: null })
         yield put({ type: FETCH_END_REQ })
+        // yield put({ type: FETCH_CART_REQ, payload: user.data.access })
 
     }
     catch (error) {

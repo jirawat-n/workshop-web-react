@@ -62,7 +62,7 @@ function Product() {
                                                 //         <Icon name='shop' />
                                                 //     </Button.Content>
                                                 // </Button>
-                                                <Button floated='right' onClick={() => action(ADD_PRODUCT_AND_AUTH_REQ, { ...datas, quantity: 1 }, user.data.access)}>Here</Button>
+                                                <Button floated='right' onClick={() => action(ADD_PRODUCT_AND_AUTH_REQ, { ...datas, quantity: 1 }, user.data.access)}>Add Cart</Button>
                                                 :
                                                 <Button floated='right' animated='fade' messages="Please Login" onClick={() => detailhistory.push(`/login`)}>
                                                     <Button.Content hidden>Add Cart</Button.Content>

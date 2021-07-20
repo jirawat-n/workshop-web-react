@@ -1,10 +1,10 @@
 import { takeEvery, all } from 'redux-saga/effects'
-import { ADD_TO_CART_REQ, DELETE_CART_REQ, FETCH_START, FETCH_END, FETCH_ERROR, ADD_PRODUCT_AND_AUTH_REQ, SET_AUTH_REQ, FETCH_AUTH_REQ, FETCH_CART_REQ, ADD_TO_STORE_REQ } from './actionTypes'
+import { ADD_TO_CART_REQ, DELETE_CART_REQ, FETCH_START, FETCH_END, FETCH_ERROR, ADD_PRODUCT_AND_AUTH_REQ, SET_AUTH_REQ, FETCH_AUTH_REQ, FETCH_CART_REQ, ADD_TO_STORE_REQ, DELETE_PRODUCT_AND_AUTH_REQ } from './actionTypes'
 import { setAuth } from '../saga/counter.action'
 import { setAddProductAction, setDeleteProductAction } from '../saga/counter.action'
 import { startFetch, endFetch, errorFetch } from './StatusActions'
 import { fetchAuthAsync } from '../actions/AuthActions'
-import { fetchCartAsync } from '../actions/AddtoCartAction'
+import { fetchCartAsync, fetchDeleteCartAsync } from '../actions/AddtoCartAction'
 import { fetchCartStoreAsync, seeStore } from '../actions/FerchCartAction'
 // Status ของ Login
 //--------------------------------------------------------------------------
@@ -43,10 +43,15 @@ function* watchAddProductAPIAction() {
 function* watchSeeProductAPIAction() {
     yield takeEvery(FETCH_CART_REQ, fetchCartStoreAsync)
 }
+// Watcher ของการลบตะกร้าสินค้า API
+function* watchAddDeleteAPIAction() {
+    yield takeEvery(DELETE_PRODUCT_AND_AUTH_REQ, fetchDeleteCartAsync)
+}
 // Watcher ของการดูตะกร้าสินค้า API
 function* watchADDtoStorection() {
     yield takeEvery(ADD_TO_STORE_REQ, seeStore)
 }
+
 // Export ออกไป
 export default function* rootSaga() {
     yield all([
@@ -60,6 +65,7 @@ export default function* rootSaga() {
         watchAddProductAPIAction(),
         watchSeeProductAPIAction(),
         watchADDtoStorection(),
+        watchAddDeleteAPIAction(),
     ]
     )
 }

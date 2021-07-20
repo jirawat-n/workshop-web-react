@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useHistory } from "react-router-dom"
-import { useSelector, useDispatch } from 'react-redux'
-import { Menu, Icon, Button, Dropdown, Input, Grid, Image, Container } from 'semantic-ui-react'
+import { useSelector } from 'react-redux'
+import { Menu, Icon, Button, Dropdown, Input, Container } from 'semantic-ui-react'
 import '../assets/navbar.css'
 function Navbar() {
     const { user } = useSelector(state => state.auth)
@@ -10,7 +10,7 @@ function Navbar() {
     const [Select, setSelect] = useState('home')
     const history = useHistory();
     const detailhistory = useHistory();
-    console.log('คาท', cart);
+    // console.log('คาท', cart);
     const handleItemClick = (event) => {
         const selected = event.target.textContent;
         setSelect(selected)
