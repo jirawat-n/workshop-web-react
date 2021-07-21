@@ -41,3 +41,20 @@ export const FETCH_CART_REQ = 'FETCH_CART_REQ'
 
 export const ADD_TO_STORE = 'ADD_TO_STORE'
 export const ADD_TO_STORE_REQ = 'ADD_TO_STORE_REQ'
+
+export const SEARCH_PRODUCT = 'SEARCH_PRODUCT'
+export const SEARCH_PRODUCT_REQ = 'SEARCH_PRODUCT_REQ'
+
+export const FETCH_PRODUCT = 'FETCH_PRODUCT'
+export const FETCH_PRODUCT_REQ = 'FETCH_PRODUCT_REQ'
+
+export const SORT_PRODUCT = 'SORT_PRODUCT'
+export const SORT_PRODUCT_REQ = 'SORT_PRODUCT_REQ'
+
+
+export const BREAD_LINK = 'BREAD_LINK'
+export const BREAD_LINK_REQ = 'BREAD_LINK_REQ'
+
+
+
+

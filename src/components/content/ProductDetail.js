@@ -22,7 +22,6 @@ function ProductDetail() {
                 document.title = "Product :" + " " + title
                 const res = data.data
                 setProduct(res)
-                console.log(res)
             }).catch((error) => {
                 console.log(error)
             })
@@ -33,9 +32,9 @@ function ProductDetail() {
             </div>
         )
     }
-    console.log('เท่านี้', Product.data);
+
     return (
-        <div>
+        <div className="body-des">
             <h1 text>Product</h1>
             <Grid columns='equal'>
                 <Grid.Column width={5}>
@@ -48,38 +47,45 @@ function ProductDetail() {
 
                 </Grid.Column>
             </Grid>
-            {Product.data === 0 ?
-                <div style="loader-pds">
-                    <Loader active inline='centered' size='massive' />
-                </div> :
-                <div className="detail-p ">
-                    <Grid>
-                        <Grid.Column width={10}>
-                            <Image centered src={Product.data.image.full_size} /><br></br>
-                        </Grid.Column>
-                        <Grid.Column width={3}>
-                            <p >{Product.data.name}</p>
-                            <p >{Product.data.name}</p>
-                            <p >{Product.data.name}</p>
-                        </Grid.Column>
-                        <Grid.Column width={3}>
-                            <p >{Product.data.price}</p>
-                            {user ?
-
-                                <Button floated='right' onClick={() => action(ADD_PRODUCT_AND_AUTH_REQ, { ...Product.data, quantity: 1 }, user.data.access)}>Add Cart</Button>
-                                :
-                                <Button floated='right' animated='fade' messages="Please Login" onClick={() => detailhistory.push(`/login`)}>
-                                    <Button.Content hidden>Add Cart</Button.Content>
-                                    <Button.Content visible>
-                                        <Icon name='shop' />
-                                    </Button.Content>
-                                </Button>
-                            }
-                        </Grid.Column>
-                    </Grid>
-                </div>
-            }
-            <div className="footer-nav"></div>
+            <div className="detail-p">
+                {Product.data === 0 ?
+                    <div className="loader-pds">
+                        <Loader active inline='centered' size='massive' />
+                    </div> :
+                    <div >
+                        <Grid>
+                            <Grid.Row>
+                                <Grid.Column width={10}>
+                                   
+                                        <Image className="fieldset-img" centered src={Product.data.image.full_size} />
+                                    
+                                </Grid.Column>
+                                <Grid.Column width={6}>
+                                    <fieldset className="fieldset-main">
+                                        <legend className="legendhaed">Description</legend>
+                                        <p>ID : {Product.data.id}</p>
+                                        <p>Name : {Product.data.name}</p>
+                                        <p>Price : {Product.data.price} Bath.</p>
+                                        {user ?
+                                            <Button fluid onClick={() => action(ADD_PRODUCT_AND_AUTH_REQ, { ...Product.data, quantity: 1 }, user.data.access)}>Add Cart</Button>
+                                            :
+                                            <div className="button-buy">
+                                                <Button fluid circular color='black' animated='fade' messages="Please Login" onClick={() => detailhistory.push(`/login`)}>
+                                                    <Button.Content hidden>Add Cart</Button.Content>
+                                                    <Button.Content visible>
+                                                        <Icon name='shop' />
+                                                    </Button.Content>
+                                                </Button>
+                                            </div>
+                                        }
+                                    </fieldset>
+                                </Grid.Column>
+                            </Grid.Row>
+                        </Grid>
+                    </div>
+                }
+            </div>
+            <div ></div>
         </div>
     )
 }

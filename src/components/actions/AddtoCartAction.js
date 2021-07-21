@@ -48,8 +48,8 @@ export function* fetchCartAsync({ payload, token }) {
 
 
 const DeleteCart = async ({ payload, token }) => {
-    console.log('fet เพ', payload);
-    console.log('fet โท', token);
+    console.log( payload);
+    console.log(token);
     const id = payload
     try {
         const config = {
@@ -67,8 +67,8 @@ const DeleteCart = async ({ payload, token }) => {
 
 
 export function* fetchDeleteCartAsync({ payload, token }) {
-    console.log('โทเคน', token);
-    console.log('โหลด', payload);
+    // console.log('โทเคน', token);
+    // console.log('โหลด', payload);
 
     try {
         // yield put({ type: FETCH_START_REQ })

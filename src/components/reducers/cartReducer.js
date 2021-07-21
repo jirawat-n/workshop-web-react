@@ -1,4 +1,3 @@
-// import { ADD_TO_CART, DELETE_CART } from '../actions/CartActions'
 import { ADD_TO_CART, DELETE_CART } from '../actions/CartActions'
 import { ADD_TO_STORE } from '../saga/actionTypes'
 const initialState = {

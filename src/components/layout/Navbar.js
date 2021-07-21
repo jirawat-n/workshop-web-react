@@ -1,16 +1,20 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
-import { useHistory } from "react-router-dom"
-import { useSelector } from 'react-redux'
-import { Menu, Icon, Button, Dropdown, Input, Container } from 'semantic-ui-react'
+import { useHistory, Link } from "react-router-dom"
+import { useSelector, useDispatch } from 'react-redux'
+import { Menu, Icon, Button, Dropdown, Input, Container, Form, Search } from 'semantic-ui-react'
 import '../assets/navbar.css'
+import { SearchCategory } from '../actions/CategoryAction'
+import { SEARCH_PRODUCT_REQ, BREAD_LINK_REQ } from '../saga/actionTypes'
 function Navbar() {
     const { user } = useSelector(state => state.auth)
     const { cart } = useSelector((state) => state.cart)
     const [Select, setSelect] = useState('home')
     const history = useHistory();
+    const dispatch = useDispatch();
+    const [Searched, setSearched] = useState('')
+    const action = (type, search) => dispatch({ type, search })
     const detailhistory = useHistory();
-    // console.log('คาท', cart);
     const handleItemClick = (event) => {
         const selected = event.target.textContent;
         setSelect(selected)
@@ -21,9 +25,23 @@ function Navbar() {
         history.push(`/${selected}/`)
 
     }
+    const handleSearch = (event) => {
+        event.preventDefault()
+        history.push(`/product/`)
+        return action(SEARCH_PRODUCT_REQ, Searched)
+    }
+    function handleclick(category_in) {
+        console.log(category_in);
+        history.push(`/product/${category_in}/`)
+    }
     const [Product, setProduct] = useState([])
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/category/?is_enabled=true/')
+        axios.get('http://127.0.0.1:8000/category/', {
+            params: {
+                is_enabled: true,
+                search: Searched
+            }
+        })
             .then(data => {
                 const res = data.data.data.results
                 setProduct(res)
@@ -32,7 +50,7 @@ function Navbar() {
     return (
         <div>
             <Menu fixed='top' className="navbar-nav" inverted>
-                <Container>
+                <Container className="navbar-nav">
                     <Menu.Item
                         name='home'
                         active={Select === 'home'}
@@ -47,14 +65,18 @@ function Navbar() {
                         <Dropdown.Menu>
                             <Dropdown.Header>Categories</Dropdown.Header>
                             {Product.map(datas => (
-                                <Dropdown.Item key={datas.id} onClick={() => detailhistory.push(`/category/${datas.id}/`)}>{datas.name}</Dropdown.Item>
+                                <Dropdown.Item key={datas.id} onClick={() => handleclick(datas.id)}>{datas.name}</Dropdown.Item>
                             )
                             )}
                         </Dropdown.Menu>
                     </Dropdown>
                     <Menu.Menu position='right'>
                         <Menu.Item>
-                            <Input icon='search' placeholder='Search...' />
+                            <Input type='text' placeholder='Search...' action value={Searched} onChange={e => setSearched(e.target.value)}>
+                                <input />
+                                <Button onClick={(e) => handleSearch(e)}>Search</Button>
+
+                            </Input>
                         </Menu.Item>
                         {user &&
                             <Menu.Item onClick={() => detailhistory.push(`/Cart/`)}>
@@ -73,7 +95,7 @@ function Navbar() {
                         </Menu.Item>
                         <Menu.Item>
                             {user ?
-                                <Button animated='fade' color="red" onClick={() => {
+                                <Button animated='fade' onClick={() => {
                                     localStorage.clear();
                                     window.location.reload();
                                 }
@@ -90,7 +112,7 @@ function Navbar() {
                     </Menu.Menu>
                 </Container>
             </Menu >
-        </div>
+        </div >
     )
 }
 

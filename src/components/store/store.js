@@ -10,7 +10,8 @@ import { rootReducer } from '../reducers/rootReducer';
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['cart', 'auth']
+    whitelist: ['cart', 'auth'],
+    blacklist: ['sort']
 }
 
 const sagaMiddleware = createSagaMiddleware()

@@ -25,9 +25,7 @@ function ProductHomeRec() {
             .then(data => {
                 const res = data.data.data.results
                 setProduct(res)
-                document.title = "Snerker : Product"
             })
-        console.log('Product All', Product);
     }, [])
     return (
         <div>
@@ -41,7 +39,7 @@ function ProductHomeRec() {
                         {Product.map(datas => (
                             <Grid.Column key={datas.id}>
                                 <Card centered>
-                                    <Image src={datas.image.medium_square_crop} />
+                                    <Image className="zoom" src={datas.image.medium_square_crop} onClick={() => detailhistory.push(`/product/${datas.id}/`)} />
                                     <Card.Content>
                                         <Card.Header>{datas.name}</Card.Header>
                                         <Card.Meta>

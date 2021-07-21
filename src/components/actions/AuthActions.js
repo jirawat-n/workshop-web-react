@@ -24,7 +24,6 @@ const FetchUser = async (payload) => {
 
 
 export function* fetchAuthAsync({ payload }) {
-    console.log('auth', payload);
     try {
         yield put({ type: FETCH_START_REQ })
         const user = yield call(FetchUser, payload)

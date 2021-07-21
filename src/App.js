@@ -17,12 +17,12 @@ import { CSSTransition, TransitionGroup, } from 'react-transition-group';
 
 function App() {
    return (
-      <div className="App">
+      <div className="body-back all-font">
          <Navbar />
-         <div className="header-nav"></div>
+         {/* <div className="header-nav"></div> */}
          <TransitionGroup>
             <CSSTransition timeout={450} classNames="fade">
-               <Switch >
+               <Switch>
                   <Route exact path="/"><HomePage /></Route>
                   <Route path="/about"><About /></Route>
                   <Route path="/signin"><Signin /></Route>
@@ -30,9 +30,10 @@ function App() {
                   <Route path="/cart"><CartPage /></Route>
                   <Route path="/token"><SignIn2 /></Route>
                   <Route exact path="/product"><ProductPage /></Route>
-                  <Route path="/product/:productId"><ProductPageDetails /></Route>
+                  <Route exact path="/product/:category_in"><ProductPage /></Route>
+                  <Route path="/product/:category_in/:productId/"><ProductPageDetails /></Route>
                   <Route path="/login"><Login /></Route>
-                  <Route path="/category/:categoryId"><CategoryDetailPage /></Route>
+                  <Route path="/product/:categoryId"><CategoryDetailPage /></Route>
                   <Route path="/:id">
                      <h1>404 PAGE NOT FOUND</h1>
                   </Route>
