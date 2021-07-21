@@ -72,8 +72,7 @@ function Navbar() {
                     </Dropdown>
                     <Menu.Menu position='right'>
                         <Menu.Item>
-                            <Input type='text' placeholder='Search...' action value={Searched} onChange={e => setSearched(e.target.value)}>
-                                <input />
+                            <Input type='text' placeholder='Search...' action value={Searched} onChange={e => setSearched(e.target.value)}><input />
                                 <Button onClick={(e) => handleSearch(e)}>Search</Button>
 
                             </Input>

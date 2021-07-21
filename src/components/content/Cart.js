@@ -1,6 +1,6 @@
 import React from 'react'
 import { DELETE_PRODUCT_AND_AUTH_REQ, ADD_PRODUCT_AND_AUTH_REQ } from '../saga/actionTypes'
-import { Icon, Label, Button, Table, Breadcrumb, Grid } from 'semantic-ui-react'
+import { Icon, Label, Button, Table, Input, Grid } from 'semantic-ui-react'
 import { deleteCart } from '../actions/CartActions'
 import { useSelector, useDispatch } from 'react-redux'
 import Breadcumb from '../layout/Breadcumb'
@@ -52,12 +52,13 @@ function TableCart() {
                                     </Table.Cell>
                                     <Table.Cell style={{ textAlign: "center" }}>{item.quantity}</Table.Cell>
                                     <Table.Cell style={{ textAlign: "center" }}>{item.total * item.quantity / item.quantity}</Table.Cell>
-                                    <Table.Cell style={{ textAlign: "center" }} width={3}>
+                                    <Table.Cell style={{ textAlign: "center" }} width={16}>
                                         <Button.Group>
                                             <Button negative>-</Button>
-                                            <Button.Or />
+                                            <Button >{item.quantity}</Button >
                                             <Button positive onClick={() => action(ADD_PRODUCT_AND_AUTH_REQ, { ...item, quantity: 1 }, user.data.access)}>+</Button>
                                         </Button.Group>
+
                                     </Table.Cell>
                                     <Table.Cell style={{ textAlign: "center" }} width={3}>
                                         <Button color='red' animated onClick={() => action(DELETE_PRODUCT_AND_AUTH_REQ, item.id, user.data.access)}>
