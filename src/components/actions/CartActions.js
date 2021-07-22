@@ -23,3 +23,10 @@ export function clearCart() {
     type: CLEAR_CART,
   }
 }
+
+export function updateCart(addedProduct) {
+  return {
+    type: ADD_TO_CART,
+    payload: addedProduct,
+  }
+}

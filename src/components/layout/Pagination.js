@@ -1,15 +1,18 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Pagination } from 'semantic-ui-react'
+import axios from 'axios'
 
-const Pagination_Foot = () => (
-    <Pagination
-        defaultActivePage={1}
-        firstItem={null}
-        lastItem={null}
-        pointing
-        secondary
-        totalPages={3}
-    />
-)
+function Pagination_Foot() {
+    return (
+        <Pagination
+            defaultActivePage={1}
+            firstItem={null}
+            lastItem={null}
+            pointing
+            secondary
+            totalPages={3}
+        />
+    )
+}
 
-export default Pagination_Foot
+export default Pagination_Foot;

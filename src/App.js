@@ -19,7 +19,6 @@ function App() {
    return (
       <div className="body-back all-font">
          <Navbar />
-         {/* <div className="header-nav"></div> */}
          <TransitionGroup>
             <CSSTransition timeout={450} classNames="fade">
                <Switch>
@@ -40,7 +39,7 @@ function App() {
                </Switch>
             </CSSTransition>
          </TransitionGroup>
-         <Footer className="Footer" />
+         <Footer />
       </div>
    );
 }

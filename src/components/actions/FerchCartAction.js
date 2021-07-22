@@ -11,7 +11,6 @@ export function* seeStore({ payload }) {
 }
 
 const FetchCart = async (token) => {
-    // console.log('Token เอพีไอ', token);
     try {
         const config = {
             headers: {
@@ -19,7 +18,6 @@ const FetchCart = async (token) => {
             }
         }
         const response = await axios.get('http://127.0.0.1:8000/cart/', config)
-        console.log('ระเบิดแน่', response.data);
         return response.data
     }
     catch (error) {
@@ -33,7 +31,6 @@ export function* fetchCartStoreAsync({ token }) {
         yield put({ type: FETCH_START_REQ })
         let response = yield call(FetchCart, token)
         yield put({ type: ADD_TO_STORE_REQ, payload: response })
-        yield console.log('เรสปอน ของ data', response);
         yield put({ type: FETCH_ERROR_REQ, payload: null })
         yield put({ type: FETCH_END_REQ })
     }

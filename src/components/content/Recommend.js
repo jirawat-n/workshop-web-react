@@ -4,7 +4,7 @@ import { ADD_PRODUCT_AND_AUTH_REQ } from '../saga/actionTypes'
 import { useHistory } from 'react-router'
 import { Card, Grid, Image, Button, Icon, Loader, Dimmer, Segment } from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux'
-import Pagination_Foot from '../layout/Pagination'
+import PlaceHoldersProduct from '../layout/placeholder/PlaceHoldersProdut'
 import '../assets/home.css'
 function ProductHomeRec() {
     // ใช้ SAGA
@@ -31,7 +31,7 @@ function ProductHomeRec() {
         <div>
             {Product.length === 0 ?
                 <div className="loader-r">
-                    <Loader active inline='centered' size='massive' />
+                    <div></div>
                 </div> :
                 <Grid text style={{ marginTop: '1em' }}>
                     <h1>Recommend</h1>

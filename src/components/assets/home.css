@@ -1,12 +1,12 @@
 .loader-h {
     height    : 50vh;
     height    : 100px;
-    margin-top: 20vh;
+    margin-top: 6.9vh;
     z-index   : -999;
 }
 
 .body-back {
-    background-color: rgb(245, 245, 245);
+    background-color: rgb(255, 255, 255);
 }
 
 .loader-p {
@@ -94,11 +94,11 @@
 }
 
 .body-h {
-    margin-top: 100px;
+    margin-top: 6px;
 }
 
 .body-des {
-    margin-top: 86px;
+    margin-top: 6px;
 }
 
 .cart-b {
@@ -111,6 +111,10 @@
 
 .button-buy {
     margin-top: 50px;
+}
+
+.detail-des {
+    min-height: 100vh
 }
 
 

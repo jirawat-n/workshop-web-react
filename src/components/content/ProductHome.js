@@ -6,6 +6,7 @@ import { Card, Grid, Image, Button, Icon, Loader, Dimmer, Segment } from 'semant
 import { useDispatch, useSelector } from 'react-redux'
 import Pagination_Foot from '../layout/Pagination'
 import ProductHomeRec from './Recommend'
+import PlaceHoldersProductHome from '../layout/placeholder/PlaceHoldersProdutHome'
 import '../assets/home.css'
 function ProductHome() {
     // ใช้ SAGA
@@ -17,18 +18,18 @@ function ProductHome() {
             .then(data => {
                 const res = data.data.data.results
                 setProduct(res)
-                document.title = "Sneker : Home"
+                document.title = "Mirrorless : Home"
             })
     }, [])
 
     return (
-        <div className="body-h">
+        <div className="body-des">
+            <h1>Category</h1>
             {Product.length === 0 ?
                 <div className="loader-h" >
-                    <Loader active inline='centered' size='massive' />
+                   <PlaceHoldersProductHome/>
                 </div> :
-                <Grid>
-                    <h1>Category</h1>
+                <Grid>                    
                     <Grid.Row columns={3}>
                         {Product.map(datas => (
                             <Grid.Column key={datas.id}>
@@ -37,7 +38,7 @@ function ProductHome() {
                                     <Card.Content>
                                         <Card.Header>{datas.name}</Card.Header>
                                         <Card.Meta>
-                                            <span className='date'>{datas.price} Bath.</span>
+                                            <span className='date'>{datas.detail}</span>
                                         </Card.Meta>
                                         <Card.Description>
                                             <Button floated='right' animated='fade' onClick={() => detailhistory.push(`/product/${datas.id}/`)}>
