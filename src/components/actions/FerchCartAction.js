@@ -19,8 +19,8 @@ const FetchCart = async (token) => {
             }
         }
         const response = await axios.get('http://127.0.0.1:8000/cart/', config)
-        console.log('ระเบิดแน่', response.data.data.results);
-        return response.data.data.results
+        console.log('ระเบิดแน่', response.data);
+        return response.data
     }
     catch (error) {
         console.log('เออเร่อของ fetchCart', error.response.data)

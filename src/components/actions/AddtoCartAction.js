@@ -29,10 +29,10 @@ const FetchCart = async ({ payload, token }) => {
 
 
 export function* fetchCartAsync({ payload, token }) {
-    // console.log('หน้าเพิ่ม', token);
+    console.log('หน้าเพิ่ม', token);
     try {
         yield put({ type: FETCH_START_REQ })
-        let response = yield call(FetchCart, { payload, token })
+        yield call(FetchCart, { payload, token })
         yield put({ type: FETCH_CART_REQ, token: token })
         yield put({ type: FETCH_ERROR_REQ, payload: null })
         yield put({ type: FETCH_END_REQ })

@@ -1,8 +1,8 @@
 import React from 'react'
-import { DELETE_PRODUCT_AND_AUTH_REQ, ADD_PRODUCT_AND_AUTH_REQ } from '../saga/actionTypes'
-import { Icon, Label, Button, Table, Input, Grid } from 'semantic-ui-react'
-import { deleteCart } from '../actions/CartActions'
+import { DELETE_PRODUCT_AND_AUTH_REQ } from '../saga/actionTypes'
+import { Icon, Label, Button, Table, Image, Grid } from 'semantic-ui-react'
 import { useSelector, useDispatch } from 'react-redux'
+import axios from 'axios'
 import Breadcumb from '../layout/Breadcumb'
 import '../assets/table.css'
 import '../assets/home.css'
@@ -11,6 +11,10 @@ function TableCart() {
     const { cart } = useSelector(state => state.cart)
     const { user } = useSelector(state => state.auth)
     const dispatch = useDispatch();
+    // const updateProduct = () => {
+    //     axios.patch(`http://127.0.0.1:8000/product/${}`)
+    //     .then
+    // }
     return (
         <div className="cart-b">
             <br></br><br></br><br></br><br></br><br></br>
@@ -34,9 +38,9 @@ function TableCart() {
                                 <Table.HeaderCell width={1}>Number</Table.HeaderCell>
                                 <Table.HeaderCell width={2}>Product</Table.HeaderCell>
                                 <Table.HeaderCell width={3}>image</Table.HeaderCell>
-                                <Table.HeaderCell width={2}>Quantity</Table.HeaderCell>
-                                <Table.HeaderCell width={2}>Price</Table.HeaderCell>
-                                <Table.HeaderCell colSpan={2} >Manage</Table.HeaderCell>
+                                <Table.HeaderCell width={4}>Quantity</Table.HeaderCell>
+                                <Table.HeaderCell width={3}>Price</Table.HeaderCell>
+                                <Table.HeaderCell width={3}>Manage</Table.HeaderCell>
                             </Table.Row>
                         </Table.Header>
 
@@ -46,20 +50,12 @@ function TableCart() {
                                     <Table.Cell >
                                         <Label ribbon>{item.id}</Label>
                                     </Table.Cell>
-                                    <Table.Cell>{item.product}</Table.Cell>
+                                    <Table.Cell>{item.product.name}</Table.Cell>
                                     <Table.Cell width={4}>
-                                        {/* <Image centered src={item.image.thumbnail} /> */}
+                                        <Image centered src={"http://127.0.0.1:8000" + item.product.image.thumbnail} />
                                     </Table.Cell>
-                                    <Table.Cell style={{ textAlign: "center" }}>{item.quantity}</Table.Cell>
-                                    <Table.Cell style={{ textAlign: "center" }}>{item.total * item.quantity / item.quantity}</Table.Cell>
-                                    <Table.Cell style={{ textAlign: "center" }} width={16}>
-                                        <Button.Group>
-                                            <Button negative>-</Button>
-                                            <Button >{item.quantity}</Button >
-                                            <Button positive onClick={() => action(ADD_PRODUCT_AND_AUTH_REQ, { ...item, quantity: 1 }, user.data.access)}>+</Button>
-                                        </Button.Group>
-
-                                    </Table.Cell>
+                                    <Table.Cell style={{ textAlign: "center" }}><Button circular >-</Button>&nbsp;&nbsp;{item.quantity}&nbsp;&nbsp;&nbsp;<Button circular >+</Button></Table.Cell>
+                                    <Table.Cell style={{ textAlign: "center" }}>{item.product.price}</Table.Cell>
                                     <Table.Cell style={{ textAlign: "center" }} width={3}>
                                         <Button color='red' animated onClick={() => action(DELETE_PRODUCT_AND_AUTH_REQ, item.id, user.data.access)}>
                                             <Button.Content visible>
@@ -75,11 +71,17 @@ function TableCart() {
                         )}
                         <Table.Footer fullWidth>
                             <Table.Row>
-                                <Table.HeaderCell colSpan='4'>
+                                <Table.HeaderCell colSpan='3'>
+                                </Table.HeaderCell>
+                                <Table.HeaderCell style={{ textAlign: 'center' }}>
+
+                                    {cart.length === 0 ? <div></div>
+                                        : <span>  ทั้งหมด {cart.reduce((sum, item) => sum + (item.quantity), 0)} ชิ้น</span>
+                                    }
                                 </Table.HeaderCell>
                                 <Table.HeaderCell style={{ textAlign: 'center' }}>
                                     {cart.length === 0 ? <div></div>
-                                        : <span> {cart.reduce((sum, item) => sum + (item.total * item.quantity / item.quantity), 0)} Bath.</span>
+                                        : <span> {cart.reduce((sum, item) => sum + (item.total), 0)} Bath.</span>
                                     }
                                 </Table.HeaderCell>
                                 <Table.HeaderCell style={{ textAlign: 'right' }} colSpan='2'>
@@ -92,7 +94,6 @@ function TableCart() {
                     </Table >
                 </Grid.Column>
                 <Grid.Column>
-
                 </Grid.Column>
             </Grid>
 
