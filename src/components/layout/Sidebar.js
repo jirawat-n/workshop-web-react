@@ -25,8 +25,7 @@ function Sidebar() {
             })
     }, [])
     function handleclick(category_in) {
-        console.log(category_in);
-        history.push(`/product/${category_in}/`)
+           history.push(`/product/${category_in}/`)
     }
     return (
         <div className="side-des">

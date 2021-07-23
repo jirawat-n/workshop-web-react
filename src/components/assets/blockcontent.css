@@ -1,14 +1,19 @@
 .block {
-    display: flex;
+    display       : flex;
     flex-direction: row;
 }
 
 .sideblock {
     justify-content: center;
-    align-items: center;
-    display: block;
+    align-items    : center;
+    display        : block;
 }
-.body-des {
+
+.body-dess {
     margin-top: 86px;
 }
 
+.home-co {
+    padding-bottom   : 10vh;
+    min-height    : 80vh;
+}

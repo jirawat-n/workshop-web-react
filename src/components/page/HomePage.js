@@ -11,8 +11,12 @@ function HomePage() {
                     <Grid.Column width={3}>
                     </Grid.Column>
                     <Grid.Column width={10}>
-                        <ProductHome />
-                        <ProductHomeRec />
+                        <div className="body-dess">
+                            <ProductHome />
+                        </div>
+                        <div className="home-co">
+                            <ProductHomeRec />
+                        </div>
                     </Grid.Column>
                     <Grid.Column width={3}>
                     </Grid.Column>

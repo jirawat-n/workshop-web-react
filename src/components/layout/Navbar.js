@@ -31,7 +31,6 @@ function Navbar() {
         return action(SEARCH_PRODUCT_REQ, Searched)
     }
     function handleclick(category_in) {
-        console.log(category_in);
         history.push(`/product/${category_in}/`)
     }
     const [Product, setProduct] = useState([])

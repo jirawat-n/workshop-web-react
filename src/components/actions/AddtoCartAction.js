@@ -83,7 +83,6 @@ const UpdateFetchCart = async ({ payload, token, quantity }) => {
             }
         }
         const response = await axios.patch(`http://127.0.0.1:8000/cart/${payload}/`, { quantity: quantity }, config)
-        console.log('up', response);
         return response
     }
     catch (error) {

@@ -13,7 +13,6 @@ export default function Item() {
             .then(data => {
                 const res = data.data.data.results
                 setProduct(res)
-                console.log(res)
             })
     }, [])
     return (

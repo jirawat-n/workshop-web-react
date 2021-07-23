@@ -26,7 +26,6 @@ const FetchCart = async (token) => {
 }
 
 export function* fetchCartStoreAsync({ token }) {
-    console.log('โทเค่นหน้าดูสินค้า', token);
     try {
         yield put({ type: FETCH_START_REQ })
         let response = yield call(FetchCart, token)
@@ -35,7 +34,7 @@ export function* fetchCartStoreAsync({ token }) {
         yield put({ type: FETCH_END_REQ })
     }
     catch (error) {
-        console.log('เออเร่อ', error);
+       
         yield put({ type: FETCH_ERROR_REQ, error })
         yield put({ type: FETCH_END_REQ })
 

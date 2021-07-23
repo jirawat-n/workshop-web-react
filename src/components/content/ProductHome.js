@@ -9,7 +9,6 @@ import ProductHomeRec from './Recommend'
 import PlaceHoldersProductHome from '../layout/placeholder/PlaceHoldersProdutHome'
 import '../assets/home.css'
 function ProductHome() {
-    // ใช้ SAGA
     const [Product, setProduct] = useState([])
     const dispatch = useDispatch();
     const detailhistory = useHistory();
@@ -23,7 +22,7 @@ function ProductHome() {
     }, [])
 
     return (
-        <div className="body-des">
+        <div className="body">
             <h1>Category</h1>
             {Product.length === 0 ?
                 <div className="loader-h" >

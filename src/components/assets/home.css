@@ -2,7 +2,6 @@
     height    : 50vh;
     height    : 100px;
     margin-top: 6.9vh;
-    z-index   : -999;
 }
 
 .body-back {
@@ -21,30 +20,18 @@
     height               : 70%;
 }
 
+.cart-body {
+    min-height    : 80vh;
+    padding-bottom: 5vh;
+}
+
 .input-style:focus {
     outline: none;
     border : 1px solid #000000;
     color  : #131313;
 }
 
-.loader-p {
-    height    : 60vh;
-    margin-top: 20vh;
-    text-align: center;
-    z-index   : -999;
-}
 
-.loader-pds {
-    height    : 25vh;
-    margin-top: 25vh;
-    z-index   : -999;
-}
-
-.loader-r {
-    height    : 50vh;
-    margin-top: 40vh;
-    z-index   : -999;
-}
 
 .invoice-box {
     margin-top   : 3vh;
@@ -129,9 +116,14 @@
 }
 
 .body-des {
+    margin-top    : 6px;
+    height        : auto;
+    min-height    : 50vh;
+    padding-bottom: 10vh;
+}
+
+.body-des2 {
     margin-top: 6px;
-    height    : auto;
-    min-height: 50vh;
 }
 
 .head-Content {

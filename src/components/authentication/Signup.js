@@ -15,9 +15,7 @@ class SignIn extends Component {
         axios.post('http://127.0.0.1:8000/api/token/', username)
             .then(res => {
                 const datas = res.status
-                console.log(datas)
-                // console.log(res.data);
-                // window.location = "/retrieve" //This line of code will redirect you once the submission is succeed
+
             })
     }
     handleChange = event => {

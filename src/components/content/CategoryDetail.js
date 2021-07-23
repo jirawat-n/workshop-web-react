@@ -27,7 +27,6 @@ function CategoryDetail() {
         })
             .then(data => {
                 const title = data.data.data.results
-                console.log(title);
                 document.title = "Category :" + " " + title
                 const res = data.data.data.results
                 setProduct(res)

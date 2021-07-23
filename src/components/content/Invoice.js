@@ -27,7 +27,6 @@ function Invoice() {
     const token = user.data.access
     const { id } = useParams();
     let config = {}
-    console.log('สลัก', id);
     if (id) {
         config = {
             headers: {
@@ -55,7 +54,6 @@ function Invoice() {
 
     }, [id])
 
-    console.log(Invoice);
     return (
         <div className="body-des2">
 

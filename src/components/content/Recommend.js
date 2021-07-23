@@ -30,7 +30,7 @@ function ProductHomeRec() {
     return (
         <div>
             {Product.length === 0 ?
-                <div className="loader-r">
+                <div>
                     <div></div>
                 </div> :
                 <Grid text style={{ marginTop: '1em' }}>

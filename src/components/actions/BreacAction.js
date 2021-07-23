@@ -2,7 +2,6 @@ import { put } from 'redux-saga/effects'
 import { BREAD_LINK } from '../saga/actionTypes'
 
 export function* FetchSort({ payload }) {
-    yield console.log(payload);
-    yield put({ type: BREAD_LINK, payload: payload })
+     yield put({ type: BREAD_LINK, payload: payload })
 }
 

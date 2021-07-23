@@ -5,11 +5,9 @@ import { STATUS_INVOICE_REQ } from '../saga/actionTypes'
 import { useDispatch, useSelector } from 'react-redux'
 import { Step, Icon } from 'semantic-ui-react'
 export default function Status() {
-    const status = (type, status) => dispatch({ type, status })
     const history = useHistory();
     const dispatch = useDispatch();
     function handleclick(slug) {
-        console.log('หน้าสเตตัส', slug);
         history.push(`/invoice/${slug}/`)
     }
     return (
@@ -31,7 +29,7 @@ export default function Status() {
                     </Step.Content>
                 </Step>
                 <Step link onClick={() => handleclick('sended')}>
-                <i class="fas fa-truck" style={{ fontSize: "50px", color: 'green' }}>&nbsp;&nbsp;</i>
+                    <i class="fas fa-truck" style={{ fontSize: "50px", color: 'green' }}>&nbsp;&nbsp;</i>
                     <Step.Content>
                         <Step.Title>Sended</Step.Title>
                         <Step.Description>Status "Sended" Only</Step.Description>
