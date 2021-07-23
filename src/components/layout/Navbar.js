@@ -47,6 +47,10 @@ function Navbar() {
                 setProduct(res)
             })
     }, [])
+    const logout = () => {
+        localStorage.clear();
+        window.location.href = ('/')
+    }
     return (
         <div>
             <Menu fixed='top' className="navbar-nav" inverted>
@@ -92,13 +96,16 @@ function Navbar() {
                                 <h4>Welcome</h4>
                             }
                         </Menu.Item>
+                        {user ?
+                            <Menu.Item onClick={() => detailhistory.push(`/invoice/`)}>
+                                <h4>Invoice</h4>
+                            </Menu.Item>
+                            :
+                            <h4></h4>
+                        }
                         <Menu.Item>
                             {user ?
-                                <Button animated='fade' onClick={() => {
-                                    localStorage.clear();
-                                    window.location.reload();
-                                }
-                                }>
+                                <Button animated='fade' onClick={() => logout()}>
                                     <Button.Content visible><Icon name="sign out" /></Button.Content>
                                     <Button.Content hidden>Sign Out</Button.Content>
                                 </Button>

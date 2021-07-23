@@ -47,8 +47,13 @@ function ProductHomeRec() {
                                         </Card.Meta>
                                         <Card.Description>
                                             {user ?
+                                                <Button floated='right' animated='fade' onClick={() => action(ADD_PRODUCT_AND_AUTH_REQ, { ...datas, quantity: 1 }, user.data.access)}>
+                                                    <Button.Content hidden>Add Cart</Button.Content>
+                                                    <Button.Content visible>
+                                                        <Icon name='shop' />
+                                                    </Button.Content>
+                                                </Button>
 
-                                                <Button floated='right' onClick={() => action(ADD_PRODUCT_AND_AUTH_REQ, { ...datas, quantity: 1 }, user.data.access)}>Here</Button>
                                                 :
                                                 <Button floated='right' animated='fade' messages="Please Login" onClick={() => detailhistory.push(`/login`)}>
                                                     <Button.Content hidden>Add Cart</Button.Content>
@@ -60,17 +65,17 @@ function ProductHomeRec() {
 
                                             {user ?
 
-                                                <Button floated='right' animated='vertical' onClick={() => detailhistory.push(`/product/${datas.id}/`)}>
+                                                <Button floated='right' animated='fade' onClick={() => detailhistory.push(`/product/${datas.id}/`)}>
                                                     <Button.Content hidden>View</Button.Content>
                                                     <Button.Content visible>
-                                                        <Icon name='shop' />
+                                                        <Icon name='arrow right' />
                                                     </Button.Content>
                                                 </Button>
                                                 :
-                                                <Button floated='right' animated='vertical' onClick={() => detailhistory.push(`/product/${datas.id}/`)}>
+                                                <Button floated='right' animated='fade' onClick={() => detailhistory.push(`/product/${datas.id}/`)}>
                                                     <Button.Content hidden>View</Button.Content>
                                                     <Button.Content visible>
-                                                        <Icon name='shop' />
+                                                        <Icon name='arrow right' />
                                                     </Button.Content>
                                                 </Button>
                                             }

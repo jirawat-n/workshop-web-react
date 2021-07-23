@@ -4,6 +4,7 @@ import { FETCH_AUTH_REQ } from '../saga/actionTypes'
 import { Loader, Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
 import { useHistory } from 'react-router'
 import '../assets/navbar.css'
+import '../assets/home.css'
 export default function Login(props) {
     const action = (type, payload) => dispatch({ type, payload })
     const [username, setUsername] = useState('')
@@ -16,7 +17,7 @@ export default function Login(props) {
         history.push('/')
     }
     return (
-        <div className='form'>
+        <div className="detail-des">
             <Grid textAlign='center' style={{ height: '40vh' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
                     <Header as='h2' color='teal' textAlign='center'>
@@ -25,7 +26,7 @@ export default function Login(props) {
                     <Form size='large'>
                         <Segment stacked>
                             <Form.Input fluid icon='user' value={username} required onChange={e => setUsername(e.target.value)} iconPosition='left' placeholder='Username' />
-                            <Form.Input
+                            <Form.Input 
                                 fluid
                                 icon='lock'
                                 iconPosition='left'

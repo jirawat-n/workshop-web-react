@@ -11,6 +11,8 @@ import SignIn2 from './components/authentication/Signin2';
 import Signin from './components/authentication/Signin2';
 import Login from './components/page/Login';
 import About from './components/page/About';
+import InvoicePage from './components/page/InvoidePage';
+import InvoicePageDetail from './components/page/InvoidePageDetail';
 import Footer from './components/layout/Footer';
 import HomePage from './components/page/HomePage';
 import { CSSTransition, TransitionGroup, } from 'react-transition-group';
@@ -32,6 +34,14 @@ function App() {
                   <Route exact path="/product/:category_in"><ProductPage /></Route>
                   <Route path="/product/:category_in/:productId/"><ProductPageDetails /></Route>
                   <Route path="/login"><Login /></Route>
+
+
+                  <Route exact path="/invoice"><InvoicePage /></Route>
+
+                  <Route path="/invoice/:id/"><InvoicePage /></Route>
+
+                  <Route exact path="/invoicedetail/:InvoiceDetail/"><InvoicePageDetail /></Route>
+
                   <Route path="/product/:categoryId"><CategoryDetailPage /></Route>
                   <Route path="/:id">
                      <h1>404 PAGE NOT FOUND</h1>

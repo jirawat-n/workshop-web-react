@@ -9,6 +9,24 @@
     background-color: rgb(255, 255, 255);
 }
 
+.input-style {
+    -webkit-border-radius: 20px;
+    -moz-border-radius   : 20px;
+    border-radius        : 20px;
+    border               : 1px solid #6e6e6e;
+    color                : #686868;
+    padding-left         : 10px;
+    text-align           : center;
+    width                : 100%;
+    height               : 70%;
+}
+
+.input-style:focus {
+    outline: none;
+    border : 1px solid #000000;
+    color  : #131313;
+}
+
 .loader-p {
     height    : 60vh;
     margin-top: 20vh;
@@ -26,6 +44,18 @@
     height    : 50vh;
     margin-top: 40vh;
     z-index   : -999;
+}
+
+.invoice-box {
+    margin-top   : 3vh;
+    border       : 1px solid #9e9e9e;
+    border-radius: 20px;
+    padding      : 10px;
+    box-shadow   : 0px 5px 5px #d1d1d1;
+}
+
+.invoice-box-content {
+    height: 18vh;
 }
 
 .detail-p {
@@ -91,6 +121,7 @@
     box-shadow      : 5px 5px 18px #dfdfdf;
     height          : 450px;
     font-size       : 18px;
+    margin-top      : 10vh;
 }
 
 .body-h {
@@ -99,6 +130,21 @@
 
 .body-des {
     margin-top: 6px;
+    height    : auto;
+    min-height: 50vh;
+}
+
+.head-Content {
+    height: 6vh;
+}
+
+.date {
+    text-align: right;
+}
+
+.body-des2 {
+    margin-top: 9vh;
+    min-height: 90vh;
 }
 
 .cart-b {
@@ -114,9 +160,14 @@
 }
 
 .detail-des {
+    margin-top: 9.4vh;
     min-height: 100vh
 }
 
+.div-pro {
+    height: 70vh;
+
+}
 
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
 
