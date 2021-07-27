@@ -1,29 +1,17 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { ADD_PRODUCT_AND_AUTH_REQ, SORT_PRODUCT_REQ, FETCH_PRODUCT_REQ } from '../saga/actionTypes'
 import { useHistory } from 'react-router'
-import { Item, Grid, Image, Button, Icon, Segment, List, Label, Tab } from 'semantic-ui-react'
+import { Item, Grid, Breadcrumb, Button, Icon, Segment, Label } from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux'
-import Pagination_Foot from '../layout/Pagination'
-import Breadcumb from '../layout/Breadcumb'
 import Status from '../layout/Status'
 import '../assets/home.css'
-
-import PlaceHoldersProduct from '../layout/placeholder/PlaceHoldersProdut'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 function Invoice() {
     // ใช้ SAGA
-    const action = (type, payload, token) => dispatch({ type, payload, token })
-    const actionProduct = (type, payload) => dispatch({ type, payload })
-    const sorted = (type, sort) => dispatch({ type, sort })
     const { user } = useSelector(state => state.auth)
     const [Invoice, setInvoice] = useState([])
-    const dispatch = useDispatch();
-
     const detailhistory = useHistory();
-    const { sort, search } = useSelector(state => state.sort)
-
     const token = user.data.access
     const { id } = useParams();
     let config = {}
@@ -60,7 +48,12 @@ function Invoice() {
             <Grid columns='equal'>
                 <Grid.Column width={5}>
                     <h1>Invoice</h1>
-                    <Breadcumb />
+                    <Breadcrumb size='large'>
+                        <Breadcrumb.Section><Link to="/">Home</Link></Breadcrumb.Section>
+                        <Breadcrumb.Divider />
+                        <Breadcrumb.Divider icon='right angle' />
+                        <Breadcrumb.Section active>Invoice</Breadcrumb.Section>
+                    </Breadcrumb>
                 </Grid.Column>
                 <Grid.Column width={8}>
                 </Grid.Column>

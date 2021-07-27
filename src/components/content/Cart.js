@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
-import axios from 'axios'
+import { Link } from 'react-router-dom'
 import { DELETE_PRODUCT_AND_AUTH_REQ, FETCT_CHECKOUT_REQ, UPDATE_PRODUCT_REQ } from '../saga/actionTypes'
-import { Icon, Label, Button, Table, Image, Grid, Form, Modal, Header, Input, Container } from 'semantic-ui-react'
+import { Icon, Label, Button, Table, Image, Grid, Breadcrumb, Modal, Header, Input, Container } from 'semantic-ui-react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
 import Breadcumb from '../layout/Breadcumb'
@@ -16,12 +16,17 @@ function TableCart() {
     const { user } = useSelector(state => state.auth)
     const dispatch = useDispatch();
     const [open, setOpen] = React.useState(false)
+    const [openModal, setopenModal] = React.useState(false)
     const [InvoiceList, setInvoiceList] = useState({})
     function handleupdateAddIncreate(id, quantity) {
         update(UPDATE_PRODUCT_REQ, id, quantity + 1, user.data.access)
     }
     function handleupdateAddDecreate(id, quantity) {
         update(UPDATE_PRODUCT_REQ, id, quantity - 1, user.data.access)
+    }
+    function handleupdateModal(id) {
+        action(DELETE_PRODUCT_AND_AUTH_REQ, id, user.data.access)
+        setopenModal(false)
     }
     function handleupdateCart(e, id) {
         update(UPDATE_PRODUCT_REQ, e, id, user.data.access)
@@ -39,7 +44,12 @@ function TableCart() {
                 </Grid.Column>
                 <Grid.Column width={10}>
                     <h1>Cart</h1>
-                    <Breadcumb />
+                    <Breadcrumb size='large'>
+                        <Breadcrumb.Section><Link to="/">Home</Link></Breadcrumb.Section>
+                        <Breadcrumb.Divider />
+                        <Breadcrumb.Divider icon='right angle' />
+                        <Breadcrumb.Section active>Cart</Breadcrumb.Section>
+                    </Breadcrumb>
                 </Grid.Column>
                 <Grid.Column>
                 </Grid.Column>
@@ -82,9 +92,31 @@ function TableCart() {
                                             <Table.Cell style={{ textAlign: "center" }}>{item.product.price}</Table.Cell>
                                             <Table.Cell style={{ textAlign: "center" }} width={3}>
                                                 <div className="zoom">
-                                                    <Icon name="trash" color="red" size="large" onClick={() => action(DELETE_PRODUCT_AND_AUTH_REQ, item.id, user.data.access)}></Icon>
+                                                    <Modal
+                                                        closeIcon
+                                                        open={openModal}
+                                                        trigger={<Icon name="trash" color="red" size="large" ></Icon>}
+                                                        onClose={() => setopenModal(false)}
+                                                        onOpen={() => setopenModal(true)}
+                                                    >
+                                                        <Header icon='delete' content='Alert' />
+                                                        <Modal.Content>
+                                                            <p>
+                                                                Confirm delete ?
+                                                            </p>
+                                                        </Modal.Content>
+                                                        <Modal.Actions>
+                                                            <Button color='red' onClick={() => setopenModal(false)}>
+                                                                <Icon name='remove' /> No
+                                                            </Button>
+                                                            <Button color='green' onClick={() => handleupdateModal(item.id)}>
+                                                                <Icon name='checkmark' /> Yes
+                                                            </Button>
+                                                        </Modal.Actions>
+                                                    </Modal>
                                                 </div>
                                             </Table.Cell>
+
                                         </Table.Row>
                                     </Table.Body>
                                 )}
@@ -93,14 +125,12 @@ function TableCart() {
                                         <Table.HeaderCell colSpan='3'>
                                         </Table.HeaderCell>
                                         <Table.HeaderCell style={{ textAlign: 'center' }}>
-
                                             {cart.length === 0 ? <div></div>
                                                 : <span> {cart.reduce((sum, item) => sum + (item.quantity), 0)} Piece</span>
                                             }
                                         </Table.HeaderCell>
                                         <Table.HeaderCell style={{ textAlign: 'center' }}>
                                             {cart.length === 0 ? <div></div>
-
                                                 : <div>
                                                     Total
                                                     <span style={{ color: 'blue' }}> {cart.reduce((sum, item) => sum + (item.total), 0)}</span> Bath.

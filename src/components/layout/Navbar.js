@@ -27,11 +27,11 @@ function Navbar() {
     }
     const handleSearch = (event) => {
         event.preventDefault()
-        history.push(`/product/`)
+        history.push(`/products/`)
         return action(SEARCH_PRODUCT_REQ, Searched)
     }
     function handleclick(category_in) {
-        history.push(`/product/${category_in}/`)
+        history.push(`/products/${category_in}/`)
     }
     const [Product, setProduct] = useState([])
     useEffect(() => {
@@ -52,16 +52,16 @@ function Navbar() {
     }
     return (
         <div>
-            <Menu fixed='top' className="navbar-nav" inverted>
-                <Container className="navbar-nav">
+            <Menu fixed='top'>
+                <Container>
                     <Menu.Item
                         name='home'
                         active={Select === 'home'}
                         onClick={handleItemClick}
                     />
                     <Menu.Item
-                        name='product'
-                        active={Select === 'product'}
+                        name='products'
+                        active={Select === 'products'}
                         onClick={handleItemClick}
                     />
                     <Dropdown text='Shopping' pointing className='link item'>

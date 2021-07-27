@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { ADD_PRODUCT_AND_AUTH_REQ } from '../saga/actionTypes'
-import { useParams } from 'react-router'
-import { useHistory } from 'react-router'
-import { Grid, Button, Icon, Image } from 'semantic-ui-react'
+import { useParams, useHistory } from 'react-router'
+import { Grid, Button, Icon, Image, Breadcrumb } from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux'
 import Breadcumb from '../layout/Breadcumb'
+import { Link } from 'react-router-dom'
 import '../assets/navbar.css'
 import '../assets/home.css'
 function ProductDetail() {
@@ -50,10 +50,18 @@ function ProductDetail() {
         <div className="detail-des">
             <h1 text>Product</h1>
             <Grid columns='equal'>
-                <Grid.Column width={5}>
-                    <Breadcumb />
-                </Grid.Column>
                 <Grid.Column width={8}>
+                    <Breadcrumb size='large'>
+                        <Breadcrumb.Section><Link to="/">Home</Link></Breadcrumb.Section>
+                        <Breadcrumb.Divider />
+                        <Breadcrumb.Divider icon='right angle' />
+                        <Breadcrumb.Section ><Link to="/products">Product</Link></Breadcrumb.Section>
+                        <Breadcrumb.Divider />
+                        <Breadcrumb.Divider icon='right angle' />
+                        <Breadcrumb.Section active>{Product.data.name}</Breadcrumb.Section>
+                    </Breadcrumb>
+                </Grid.Column>
+                <Grid.Column width={5}>
 
                 </Grid.Column>
                 <Grid.Column width={3} style={{ textAlign: 'right' }}>

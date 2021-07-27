@@ -1,4 +1,4 @@
-import { SORT_PRODUCT, SEARCH_PRODUCT } from "../saga/actionTypes"
+import { SORT_PRODUCT, SEARCH_PRODUCT, PAGINATION_PRODUCT } from "../saga/actionTypes"
 
 const initialState = {
     sort: '',
@@ -13,6 +13,11 @@ export function sortReducer(state = initialState, action) {
                 sort: action.payload,
             }
         case SEARCH_PRODUCT:
+            return {
+                ...state,
+                search: action.payload,
+            }
+        case PAGINATION_PRODUCT:
             return {
                 ...state,
                 search: action.payload,

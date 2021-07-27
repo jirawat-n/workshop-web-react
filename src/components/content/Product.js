@@ -19,11 +19,12 @@ function Product() {
     const dispatch = useDispatch();
     const detailhistory = useHistory();
     const { sort, search } = useSelector(state => state.sort)
-    let { category_in } = useParams();
+    let { category_in, page } = useParams();
     useEffect(() => {
         axios.get('http://127.0.0.1:8000/product/', {
 
             params: {
+                page: page,
                 category_in: category_in,
                 is_enabled: true,
                 sort: sort,
@@ -35,7 +36,7 @@ function Product() {
                 setProduct(res)
                 actionProduct(FETCH_PRODUCT_REQ, res)
             })
-    }, [sort, category_in, search])
+    }, [sort, category_in, search, page])
     return (
         <div className="body-des">
             <Grid columns='equal'>

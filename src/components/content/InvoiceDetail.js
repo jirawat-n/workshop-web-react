@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { FETCT_SUBMIT_REQ } from '../saga/actionTypes'
 import { useHistory } from 'react-router'
-import { Item, Grid, Segment, Button, Icon, Table, List, Label, Tab } from 'semantic-ui-react'
+import { Item, Grid, Segment, Button, Icon, Table, Modal, Label, Header } from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux'
 import Pagination_Foot from '../layout/Pagination'
 import Breadcumb from '../layout/Breadcumb'
@@ -20,7 +20,7 @@ function InvoiceDetail() {
     const { user } = useSelector(state => state.auth)
     const [Invoice, setInvoice] = useState([])
     const dispatch = useDispatch();
-
+    const [openModal, setopenModal] = React.useState(false)
     const detailhistory = useHistory();
     const { sort, search } = useSelector(state => state.sort)
 
@@ -139,10 +139,31 @@ function InvoiceDetail() {
 
                     <Item.Extra>
                         <br></br>
-                        <Button primary floated='right' onClick={() => handleVoid(Invoice.id)}>
-                            Submit Void
-                            <Icon name='right chevron' />
-                        </Button>
+                        <Modal
+                            closeIcon
+                            open={openModal}
+                            trigger={<Button primary floated='right'>
+                                Submit Void
+                                <Icon name='right chevron' />
+                            </Button>}
+                            onClose={() => setopenModal(false)}
+                            onOpen={() => setopenModal(true)}
+                        >
+                            <Header icon='delete' content='Alert' />
+                            <Modal.Content>
+                                <p>
+                                    Confirm Cancel ?
+                                </p>
+                            </Modal.Content>
+                            <Modal.Actions>
+                                <Button color='red' onClick={() => setopenModal(false)}>
+                                    <Icon name='remove' /> No
+                                </Button>
+                                <Button color='green' onClick={() => handleVoid(Invoice.id)}>
+                                    <Icon name='checkmark' /> Yes
+                                </Button>
+                            </Modal.Actions>
+                        </Modal>
                     </Item.Extra>
                 </Segment> : <div></div>}
             {Invoice.status === "sended" ?
@@ -183,13 +204,6 @@ function InvoiceDetail() {
                             </Table.Footer>
                         </Table>
                     </Item.Description>
-                    <Item.Extra>
-                        <br></br>
-                        <Button primary floated='right'>
-                            Submit Void
-                            <Icon name='right chevron' />
-                        </Button>
-                    </Item.Extra>
                 </Segment> : <div></div>}
 
         </div >

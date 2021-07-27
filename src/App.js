@@ -30,8 +30,11 @@ function App() {
                   <Route exact path="/category"><CategoryPage /></Route>
                   <Route path="/cart"><CartPage /></Route>
                   <Route path="/token"><SignIn2 /></Route>
-                  <Route exact path="/product"><ProductPage /></Route>
-                  <Route exact path="/product/:category_in"><ProductPage /></Route>
+
+                  <Route exact path="/products"><ProductPage /></Route>
+                  <Route exact path="/products/:category_in"><ProductPage /></Route>
+                  <Route exact path="/product/:page"><ProductPage /></Route>
+
                   <Route path="/product/:category_in/:productId/"><ProductPageDetails /></Route>
                   <Route path="/login"><Login /></Route>
 

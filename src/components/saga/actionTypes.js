@@ -70,3 +70,4 @@ export const FETCT_CHECKOUT = 'FETCT_CHECKOUT'
 
 export const FETCT_SUBMIT_REQ = 'FETCT_SUBMIT_REQ'
 export const FETCT_SUBMIT = 'FETCT_SUBMIT'
+
