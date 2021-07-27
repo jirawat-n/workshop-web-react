@@ -58,20 +58,20 @@ function TableCart() {
                 <Grid columns='equal'>
                     <Grid.Column>
                     </Grid.Column>
-                    <Grid.Column width={12}>
+                    <Grid.Column width={10}>
                         <div className="asdasdasd">
                             <Table celled>
                                 <Table.Header>
                                     <Table.Row style={{ textAlign: "center" }}>
                                         <Table.HeaderCell>ID</Table.HeaderCell>
-                                        <Table.HeaderCell width={5}>Product</Table.HeaderCell>
-                                        <Table.HeaderCell width={2}>image</Table.HeaderCell>
-                                        <Table.HeaderCell width={3}>Quantity</Table.HeaderCell>
-                                        <Table.HeaderCell width={2}>Price</Table.HeaderCell>
-                                        <Table.HeaderCell width={5}>Manage</Table.HeaderCell>
+                                        <Table.HeaderCell width={5}>ชื่อสินค้า</Table.HeaderCell>
+                                        <Table.HeaderCell width={2}>ภาพสินค้า</Table.HeaderCell>
+                                        <Table.HeaderCell width={3}>จำนวนสินค้า</Table.HeaderCell>
+                                        <Table.HeaderCell width={2}>ราคาสินค้า</Table.HeaderCell>
+                                        <Table.HeaderCell width={5}>จัดการ</Table.HeaderCell>
                                     </Table.Row>
                                 </Table.Header>
-                                {cart.length === 0 ? <Table.Cell colSpan={6}><h3 style={{ textAlign: "center" }}>Cart is Empthy</h3></Table.Cell> : cart.map(item =>
+                                {cart.length === 0 ? <Table.Cell colSpan={6}><h3 style={{ textAlign: "center" }}>ไม่มีสินค้า</h3></Table.Cell> : cart.map(item =>
                                     <Table.Body key={item.id}>
                                         <Table.Row>
                                             <Table.Cell >
@@ -83,10 +83,10 @@ function TableCart() {
                                             </Table.Cell>
                                             <Table.Cell style={{ textAlign: "center" }}>
                                                 <Button circular onClick={() => handleupdateAddDecreate(item.id, item.quantity)}>-</Button >
-                                                <Input style={{ width: "100px", textAlign: "center" }}
+                                                <input className="input-style-cart"
                                                     value={item.quantity}
                                                     onChange={(e) => update(UPDATE_PRODUCT_REQ, item.id, e.target.value, token)}>
-                                                </Input>&nbsp;
+                                                </input>&nbsp;
                                                 <Button circular onClick={() => handleupdateAddIncreate(item.id, item.quantity)}>+</Button>
                                             </Table.Cell>
                                             <Table.Cell style={{ textAlign: "center" }}>{item.product.price}</Table.Cell>
@@ -99,18 +99,18 @@ function TableCart() {
                                                         onClose={() => setopenModal(false)}
                                                         onOpen={() => setopenModal(true)}
                                                     >
-                                                        <Header icon='delete' content='Alert' />
+                                                        <Header icon='delete' content='แจ้งเตือน' />
                                                         <Modal.Content>
                                                             <p>
-                                                                Confirm delete ?
+                                                                ต้องการลบสินค้าหรือไม่ ?
                                                             </p>
                                                         </Modal.Content>
                                                         <Modal.Actions>
                                                             <Button color='red' onClick={() => setopenModal(false)}>
-                                                                <Icon name='remove' /> No
+                                                                <Icon name='remove' /> ยกเลิก
                                                             </Button>
                                                             <Button color='green' onClick={() => handleupdateModal(item.id)}>
-                                                                <Icon name='checkmark' /> Yes
+                                                                <Icon name='checkmark' /> ยืนยัน
                                                             </Button>
                                                         </Modal.Actions>
                                                     </Modal>
@@ -126,14 +126,14 @@ function TableCart() {
                                         </Table.HeaderCell>
                                         <Table.HeaderCell style={{ textAlign: 'center' }}>
                                             {cart.length === 0 ? <div></div>
-                                                : <span> {cart.reduce((sum, item) => sum + (item.quantity), 0)} Piece</span>
+                                                : <span>สินค้าทั้งหมด : {cart.reduce((sum, item) => sum + (item.quantity), 0)} ชิ้น</span>
                                             }
                                         </Table.HeaderCell>
                                         <Table.HeaderCell style={{ textAlign: 'center' }}>
                                             {cart.length === 0 ? <div></div>
                                                 : <div>
-                                                    Total
-                                                    <span style={{ color: 'blue' }}> {cart.reduce((sum, item) => sum + (item.total), 0)}</span> Bath.
+                                                    ราคารวม
+                                                    <span style={{ color: 'blue' }}> {cart.reduce((sum, item) => sum + (item.total), 0)}</span> บาท
                                                 </div>
                                             }
                                         </Table.HeaderCell>
@@ -146,18 +146,18 @@ function TableCart() {
                                                     onClose={() => setOpen(false)}
                                                     onOpen={() => setOpen(true)}
                                                 >
-                                                    <Header icon='archive' content='Messages' />
+                                                    <Header icon='archive' content='แจ้งเตือน' />
                                                     <Modal.Content>
                                                         <p>
-                                                            Confirm Check out ?
+                                                            ต้องการ Check out หรือไม่ ?
                                                         </p>
                                                     </Modal.Content>
                                                     <Modal.Actions>
                                                         <Button color='red' onClick={() => setOpen(false)}>
-                                                            <Icon name='remove' /> No
+                                                            <Icon name='remove' /> ยกเลิก
                                                         </Button>
                                                         <Button color='green' onClick={() => handleCheckout()}   >
-                                                            <Icon name='checkmark' /> Yes
+                                                            <Icon name='checkmark' /> ยืนยัน
                                                         </Button>
                                                     </Modal.Actions>
                                                 </Modal>

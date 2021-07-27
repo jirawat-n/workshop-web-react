@@ -1,6 +1,6 @@
 import { put, call } from 'redux-saga/effects'
 import axios from 'axios'
-import { FETCH_START_REQ, FETCH_END_REQ, FETCH_ERROR_REQ, FETCH_CART_REQ, ADD_TO_STORE_REQ, DELETE_PRODUCT_AND_AUTH_REQ } from '../saga/actionTypes'
+import { FETCH_START_REQ, FETCH_END_REQ, FETCH_ERROR_REQ, FETCH_CART_REQ } from '../saga/actionTypes'
 
 export const ADD_PRODUCT_AND_AUTH = 'ADD_PRODUCT_AND_AUTH'
 export function* setCartAdd(payload, token) {

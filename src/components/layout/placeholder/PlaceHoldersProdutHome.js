@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Grid, Image, Button, Icon, Dropdown, Placeholder } from 'semantic-ui-react'
+import { Grid, Placeholder } from 'semantic-ui-react'
 export default function PlaceHoldersProduct() {
     return (
         <div>

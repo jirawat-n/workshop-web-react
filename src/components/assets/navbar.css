@@ -11,8 +11,12 @@
     margin-bottom: 300px;
 }
 
-.Menu {
-    background-color: #304445;
+.Menu-navbar {
+    background-color: #2e3131 !important;
+}
+
+.input-custom {
+    border-radius: 20px !important;
 }
 
 .topnav {
@@ -37,4 +41,25 @@
 .topnav a.active {
     background-color: #04AA6D;
     color           : white;
+}
+
+.fade-appear,
+.fade-enter {
+    opacity: 0;
+    z-index: 1;
+}
+
+.fade-appear-active,
+.fade-enter.fade-enter-active {
+    opacity   : 1;
+    transition: opacity 300ms linear 150ms;
+}
+
+.fade-exit {
+    opacity: 1;
+}
+
+.fade-exit.fade-exit-active {
+    opacity   : 0;
+    transition: opacity 150ms linear;
 }

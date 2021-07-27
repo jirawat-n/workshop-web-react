@@ -44,7 +44,6 @@ function Invoice() {
 
     return (
         <div className="body-des2">
-
             <Grid columns='equal'>
                 <Grid.Column width={5}>
                     <h1>Invoice</h1>
@@ -60,79 +59,79 @@ function Invoice() {
             </Grid>
             <br></br>
             <Status />
-
             {Invoice.map(datas => (
-                <Segment key={datas.id}>
-                    {datas.status === "wait" ?
-
-                        <Item.Content>
-                            <Label ribbon color="blue"><i className="fas fa-clock" style={{ fontSize: "10px", color: 'white' }}>&nbsp;&nbsp;</i>{datas.status}</Label><br></br>
-                            <br></br>
-                            <Item.Header as='a'>ID : {datas.id}</Item.Header>
-                            <Item.Meta>
-                                <span style={{ color: "blue" }}>Status : {datas.status}</span>
-                            </Item.Meta>
-                            <Item.Description>Create : {datas.created_datetime}</Item.Description>
-                            <Item.Description>Update : {datas.updated_datetime}</Item.Description>
-                            <Item.Extra>
-                                <Button primary floated='right' onClick={() => detailhistory.push(`/invoicedetail/${datas.id}/`)}>
-                                    View
-                                    <Icon name='right chevron' />
-                                </Button>
+                <div className="invoice-segment" onClick={() => detailhistory.push(`/invoicedetail/${datas.id}/`)} key={datas.id}>
+                    <Segment >
+                        {datas.status === "wait" ?
+                            <Item.Content>
+                                <Label ribbon color="blue"><i className="fas fa-clock" style={{ fontSize: "10px", color: 'white' }}>&nbsp;&nbsp;</i>{datas.status}</Label><br></br>
                                 <br></br>
-                                <Label>Total : {datas.total}</Label>
-                            </Item.Extra>
-                        </Item.Content>
+                                <Item.Header as='a'>รหัสใบคำสั่งซื้อ : {datas.id}</Item.Header>
+                                <Item.Meta>
+                                    <span style={{ color: "blue" }}>สถานะ : {datas.status}</span>
+                                </Item.Meta>
+                                <Item.Description>สร้างเมื่อ : {datas.created_datetime}</Item.Description>
+                                <Item.Description>อัพเดตล่าสุด : {datas.updated_datetime}</Item.Description>
+                                <Item.Extra>
+                                    <Button primary floated='right' onClick={() => detailhistory.push(`/invoicedetail/${datas.id}/`)}>
+                                        ดูรายละเอียด
+                                        <Icon name='right chevron' />
+                                    </Button>
+                                    <br></br>
+                                    <Label>ราคารวม : {datas.total} บาท</Label>
+                                </Item.Extra>
+                            </Item.Content>
 
-                        : <item></item>}
-                    {datas.status === "sended" ?
+                            : <item></item>}
+                        {datas.status === "sended" ?
+                            <Item.Content>
+                                <Label ribbon color="green"><i className="fas fa-truck" style={{ fontSize: "10px", color: 'white' }}>&nbsp;&nbsp;</i>{datas.status}</Label><br></br>
+                                <br></br>
+                                <Item.Header as='a'>รหัสใบคำสั่งซื้อ : {datas.id}</Item.Header>
+                                <Item.Meta>
+                                    <span style={{ color: "green" }}>สถานะ : {datas.status}</span>
+                                </Item.Meta>
+                                <Item.Description>สร้างเมื่อ : {datas.created_datetime}</Item.Description>
+                                <Item.Description>อัพเดตล่าสุด : {datas.updated_datetime}</Item.Description>
+                                <Item.Extra>
+                                    <Button primary floated='right' onClick={() => detailhistory.push(`/invoicedetail/${datas.id}/`)}>
+                                        ดูรายละเอียด
+                                        <Icon name='right chevron' />
+                                    </Button>
+                                    <br></br>
+                                    <Label>ราคารวม : {datas.total} บาท</Label>
+                                </Item.Extra>
+                            </Item.Content>
+                            :
+                            <item>
+                            </item>
+                        }
+                        {datas.status === "cancle" ?
+                            <Item.Content>
+                                <Label ribbon color="red"><i className="fas fa-window-close" style={{ fontSize: "10px", color: 'white' }}>&nbsp;&nbsp;</i>{datas.status}</Label><br></br>
+                                <br></br>
+                                <Item.Header as='a'>รหัสใบคำสั่งซื้อ : {datas.id}</Item.Header>
+                                <Item.Meta>
+                                    <span style={{ color: "red" }}>สถานะ : {datas.status}</span>
+                                </Item.Meta>
+                                <Item.Description>สร้างเมื่อ : {datas.created_datetime}</Item.Description>
+                                <Item.Description>อัพเดตล่าสุด : {datas.updated_datetime}</Item.Description>
+                                <Item.Extra>
+                                    <Button primary floated='right' onClick={() => detailhistory.push(`/invoicedetail/${datas.id}/`)}>
+                                        ดูรายละเอียด
+                                        <Icon name='right chevron' />
+                                    </Button>
+                                    <br></br>
+                                    <Label>ราคารวม : {datas.total} บาท</Label>
+                                </Item.Extra>
+                            </Item.Content>
+                            :
+                            <item>
+                            </item>
+                        }
 
-                        <Item.Content>
-                            <Label ribbon color="green"><i className="fas fa-clock" style={{ fontSize: "10px", color: 'white' }}>&nbsp;&nbsp;</i>{datas.status}</Label><br></br>
-                            <br></br>
-                            <Item.Header as='a'>ID : {datas.id}</Item.Header>
-                            <Item.Meta>
-                                <span style={{ color: "blue" }}>Status : {datas.status}</span>
-                            </Item.Meta>
-                            <Item.Description>Create : {datas.created_datetime}</Item.Description>
-                            <Item.Description>Update : {datas.updated_datetime}</Item.Description>
-                            <Item.Extra>
-                                <Button primary floated='right' onClick={() => detailhistory.push(`/invoicedetail/${datas.id}/`)}>
-                                    View
-                                    <Icon name='right chevron' />
-                                </Button>
-                                <br></br>
-                                <Label>Total : {datas.total}</Label>
-                            </Item.Extra>
-                        </Item.Content>
-                        :
-                        <item>
-                        </item>
-                    }
-                    {datas.status === "cancle" ?
-                        <Item.Content>
-                            <Label ribbon color="red"><i className="fas fa-window-close" style={{ fontSize: "10px", color: 'white' }}>&nbsp;&nbsp;</i>{datas.status}</Label><br></br>
-                            <br></br>
-                            <Item.Header as='a'>ID : {datas.id}</Item.Header>
-                            <Item.Meta>
-                                <span style={{ color: "red" }}>Status : {datas.status}</span>
-                            </Item.Meta>
-                            <Item.Description>Create : {datas.created_datetime}</Item.Description>
-                            <Item.Description>Update : {datas.updated_datetime}</Item.Description>
-                            <Item.Extra>
-                                <Button primary floated='right' onClick={() => detailhistory.push(`/invoicedetail/${datas.id}/`)}>
-                                    View
-                                    <Icon name='right chevron' />
-                                </Button>
-                                <br></br>
-                                <Label>Total : {datas.total}</Label>
-                            </Item.Extra>
-                        </Item.Content>
-                        :
-                        <item>
-                        </item>
-                    }
-                </Segment>)
+                    </Segment>
+                </div>)
             )}
 
         </div >

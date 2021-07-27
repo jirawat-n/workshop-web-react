@@ -72,9 +72,9 @@ function InvoiceDetail() {
                         <Table celled>
                             <Table.Header>
                                 <Table.Row>
-                                    <Table.HeaderCell>Product</Table.HeaderCell>
-                                    <Table.HeaderCell textAlign="center">Quantity</Table.HeaderCell>
-                                    <Table.HeaderCell textAlign="center">Total</Table.HeaderCell>
+                                    <Table.HeaderCell textAlign="center">สินค้าทั้งหมด</Table.HeaderCell>
+                                    <Table.HeaderCell textAlign="center">จำนวนสินค้า</Table.HeaderCell>
+                                    <Table.HeaderCell textAlign="center">ราคารวม</Table.HeaderCell>
                                 </Table.Row>
                             </Table.Header>
                             {Invoice.invoice_item.map(item =>
@@ -113,9 +113,9 @@ function InvoiceDetail() {
                         <Table celled>
                             <Table.Header>
                                 <Table.Row>
-                                    <Table.HeaderCell>Product</Table.HeaderCell>
-                                    <Table.HeaderCell textAlign="center">Quantity</Table.HeaderCell>
-                                    <Table.HeaderCell textAlign="center">Total</Table.HeaderCell>
+                                    <Table.HeaderCell textAlign="center">สินค้าทั้งหมด</Table.HeaderCell>
+                                    <Table.HeaderCell textAlign="center">จำนวนสินค้า</Table.HeaderCell>
+                                    <Table.HeaderCell textAlign="center">ราคารวม</Table.HeaderCell>
                                 </Table.Row>
                             </Table.Header>
                             {Invoice.invoice_item.map(item =>
@@ -170,20 +170,20 @@ function InvoiceDetail() {
                 <Segment>
                     <Label ribbon color="green"><i className="fas fa-clock" style={{ fontSize: "10px", color: 'white' }}>&nbsp;&nbsp;</i>{Invoice.status}</Label><br></br>
                     <br></br>
-                    <Item.Header as='a'>ID : {Invoice.id}</Item.Header>
+                    <Item.Header as='a'>รหัสสินค้า : {Invoice.id}</Item.Header>
                     <Item.Meta>
                         <span style={{ color: "blue" }}>Status : {Invoice.status}</span>
                     </Item.Meta>
-                    <Item.Description>Create : {Invoice.created_datetime}</Item.Description>
-                    <Item.Description>Update : {Invoice.updated_datetime}</Item.Description>
+                    <Item.Description>สร้างเมื่อ : {Invoice.created_datetime}</Item.Description>
+                    <Item.Description>อัพเดตล่าสุด : {Invoice.updated_datetime}</Item.Description>
                     <p></p>
                     <Item.Description>
                         <Table celled>
                             <Table.Header>
                                 <Table.Row>
-                                    <Table.HeaderCell>Product</Table.HeaderCell>
-                                    <Table.HeaderCell textAlign="center">Quantity</Table.HeaderCell>
-                                    <Table.HeaderCell textAlign="center">Total</Table.HeaderCell>
+                                    <Table.HeaderCell textAlign="center">สินค้าทั้งหมด</Table.HeaderCell>
+                                    <Table.HeaderCell textAlign="center">จำนวนสินค้า</Table.HeaderCell>
+                                    <Table.HeaderCell textAlign="center">ราคารวม</Table.HeaderCell>
                                 </Table.Row>
                             </Table.Header>
                             {Invoice.invoice_item.map(item =>

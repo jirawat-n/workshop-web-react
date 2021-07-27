@@ -4,9 +4,7 @@
     margin-top: 6.9vh;
 }
 
-.body-back {
-    background-color: rgb(255, 255, 255);
-}
+
 
 .input-style {
     -webkit-border-radius: 20px;
@@ -14,15 +12,26 @@
     border-radius        : 20px;
     border               : 1px solid #6e6e6e;
     color                : #686868;
-    padding-left         : 10px;
     text-align           : center;
     width                : 100%;
     height               : 70%;
 }
 
-.cart-body {
-    min-height    : 80vh;
-    padding-bottom: 5vh;
+.input-style-cart {
+    -webkit-border-radius: 20px;
+    -moz-border-radius   : 20px;
+    border-radius        : 20px;
+    border               : 1px solid #6e6e6e;
+    color                : #686868;
+    text-align           : center;
+    width                : 40%;
+    height               : 33px;
+}
+
+.input-style-cart:focus {
+    outline: none;
+    border : 1px solid #000000;
+    color  : #131313;
 }
 
 .input-style:focus {
@@ -30,6 +39,13 @@
     border : 1px solid #000000;
     color  : #131313;
 }
+
+.cart-body {
+    min-height    : 100vh;
+    padding-bottom: 5vh;
+}
+
+
 
 
 
@@ -51,23 +67,30 @@
 }
 
 .zoom {
-    border-radius: 20px;
-    width        : 100%;
-    transition   : 0.3s;
-    opacity      : 0.8;
-    cursor       : pointer;
+    width     : 100%;
+    transition: 0.3s;
+    cursor    : pointer;
     /* Animation */
-    width        : 100%;
-    height       : 100%;
-    margin       : 0 auto;
+    width     : 100%;
+    height    : 100%;
+    margin    : 0 auto;
 
 }
 
 .zoom:hover {
     transform           : scale(1.09);
-    opacity             : 1;
     cursor              : pointer;
     /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+
+.img-pro {
+    cursor    : pointer;
+    transition: transform 0.4s;
+}
+
+.img-pro:hover {
+    transform : scale(1.05);
+    box-shadow: 1px 1px 20px rgb(202, 202, 202);
 }
 
 .Footer {
@@ -126,6 +149,10 @@
     margin-top: 6px;
 }
 
+.body-des3 {
+    margin-top: 15px;
+}
+
 .head-Content {
     height: 6vh;
 }
@@ -161,19 +188,122 @@
 
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&display=swap');
+
+div {
+    font-family: 'Kanit', sans-serif !important;
+}
+
+Button {
+    font-family: 'Kanit', sans-serif !important;
+
+}
+
+.input-custom {
+    border-radius: 20px !important;
+}
+
+Input {
+    font-family: 'Kanit', sans-serif !important;
+}
 
 .all-font {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Kanit', sans-serif !important;
 }
 
 h1 {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Kanit', sans-serif !important;
+}
+
+.logo {
+    font-size  : 30px;
+    font-family: 'Caveat', cursive;
 }
 
 h2,
 h3,
 h4,
 h5 {
-    font-family: 'Nunito', sans-serif;
+    font-family: 'Kanit', sans-serif !important;
+}
+
+
+
+.fade-in-image {
+    animation        : fadeIn 0.5s;
+    -webkit-animation: fadeIn 0.5s;
+    -moz-animation   : fadeIn 0.5s;
+    -o-animation     : fadeIn 0.5s;
+    -ms-animation    : fadeIn 0.5s;
+
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-moz-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-webkit-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-o-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+@-ms-keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.text-right {
+    text-align: right;
+}
+
+.invoice-segment {
+    cursor     : pointer;
+    margin-top : 20px;
+    line-height: 1.8;
+    transition : box-shadow .3s;
+}
+
+.invoice-segment:hover {
+    box-shadow: 0 0 11px rgba(33, 33, 33, .2);
+}
+
+.top-right {
+    right: 0;
+    left : auto;
 }

@@ -2,11 +2,13 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { ADD_PRODUCT_AND_AUTH_REQ, SORT_PRODUCT_REQ, FETCH_PRODUCT_REQ } from '../saga/actionTypes'
 import { useHistory } from 'react-router'
-import { Card, Grid, Image, Button, Icon, Dropdown } from 'semantic-ui-react'
+import { Link } from 'react-router-dom'
+import { Card, Grid, Image, Button, Icon, Dropdown, Breadcrumb, Segment } from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux'
 import Pagination_Foot from '../layout/Pagination'
 import Breadcumb from '../layout/Breadcumb'
 import '../assets/home.css'
+import '../assets/sass/productAll.scss'
 import PlaceHoldersProduct from '../layout/placeholder/PlaceHoldersProdut'
 import { useParams } from 'react-router-dom'
 function Product() {
@@ -40,75 +42,96 @@ function Product() {
     return (
         <div className="body-des">
             <Grid columns='equal'>
-                <Grid.Column width={5}>
+                <Grid.Column >
                     <h1>Product</h1>
-                    <Breadcumb />
-                </Grid.Column>
-                <Grid.Column width={8}>
-                </Grid.Column>
-                <Grid.Column width={3} style={{ textAlign: 'right' }}>
-                    <Dropdown text='Sort' floating labeled button className='icon'>
-                        <Dropdown.Menu className='right'>
-                            <Dropdown.Item>
-                                <span className='text' onClick={() => sorted(SORT_PRODUCT_REQ, 'asc')}> จากน้อยไปมาก</span>
-                            </Dropdown.Item>
-                            <Dropdown.Item>
-                                <span className='text' onClick={() => sorted(SORT_PRODUCT_REQ, 'desc')}>จากมากไปน้อย</span>
-                            </Dropdown.Item>
-                        </Dropdown.Menu>
-                    </Dropdown>
+                    <Segment>
+                        <Grid.Column width={1}>
+                            <Breadcrumb size='large'>
+                                <Breadcrumb.Section><Link to="/">Home</Link></Breadcrumb.Section>
+                                <Breadcrumb.Divider />
+                                <Breadcrumb.Divider icon='right angle' />
+                                <Breadcrumb.Section active>Product</Breadcrumb.Section>
+                            </Breadcrumb>
+                        </Grid.Column>
+                        <Grid.Column width={1}>
+                        </Grid.Column>
+                    </Segment>
                 </Grid.Column>
             </Grid>
-            <Grid.Row>
+            <p>
+            </p>
+            <Grid columns='equal'>
+                <Grid.Row>
+                    <Grid.Column width={14}>
+                        {search ? <h4>ค้นหา : {search}</h4> : <div></div>}
+
+                    </Grid.Column>
+                    <Grid.Column width={2}>
+                        <Dropdown text='Sort' icon='filter' floating labeled button className='icon'>
+                            <Dropdown.Menu>
+                                <Dropdown.Header icon='tags' content='Sort by price' />
+                                <Dropdown.Divider />
+                                <Dropdown.Item icon='sort amount up' text='จากน้อยไปมาก' onClick={() => sorted(SORT_PRODUCT_REQ, 'asc')} />
+                                <Dropdown.Item icon='sort amount down' text='จากมากไปน้อย' onClick={() => sorted(SORT_PRODUCT_REQ, 'desc')} />
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    </Grid.Column>
+                </Grid.Row>
+            </Grid>
+            <Grid.Row className="body-des3">
                 {Product.length === 0 ?
                     <PlaceHoldersProduct />
                     :
                     <div className="div-prod">
                         <Grid>
-                            <Grid.Row columns={4}>
+                            <Grid.Row columns={3}>
                                 {Product.map(datas => (
                                     <Grid.Column key={datas.id}>
-                                        <Card centered>
-                                            <Image className="zoom" src={datas.image.medium_square_crop} onClick={() => detailhistory.push(`/product/${category_in}/${datas.id}/`)} />
+                                        <Card centered className="image-border-all" style={{ width: '90%' }}>
+                                            <Image className="img-pro fade-in-image main-image" src={datas.image.medium_square_crop} onClick={() => detailhistory.push(`/product/detail/${datas.id}/`)} />
                                             <Card.Content>
-                                                <Card.Header className="head-Content">{datas.name}</Card.Header>
-                                                <Card.Meta>
-                                                    Price : <span>{datas.price} Bath.</span>
-                                                </Card.Meta>
-                                                <Card.Description>
-                                                    {user ?
-
-                                                        <Button floated='right' animated='fade' messages="Please Login" onClick={() => action(ADD_PRODUCT_AND_AUTH_REQ, { ...datas, quantity: 1 }, user.data.access)}>
-                                                            <Button.Content hidden>Add Cart</Button.Content>
-                                                            <Button.Content visible>
-                                                                <Icon name='cart arrow down' />
-                                                            </Button.Content>
-                                                        </Button>
-                                                        :
-                                                        <Button floated='right' animated='fade' messages="Please Login" onClick={() => detailhistory.push(`/login`)}>
-                                                            <Button.Content hidden>Add Cart</Button.Content>
-                                                            <Button.Content visible>
-                                                                <Icon name="cart arrow down"></Icon>
-                                                            </Button.Content>
-                                                        </Button>
-                                                    }
-                                                    {user ?
-                                                        <Button floated='right' animated='fade' onClick={() => detailhistory.push(`/product/${datas.id}/`)}>
-                                                            <Button.Content hidden>View</Button.Content>
-                                                            <Button.Content visible>
-                                                                <Icon name='arrow right' />
-                                                            </Button.Content>
-                                                        </Button>
-                                                        :
-                                                        <Button floated='right' animated='fade' onClick={() => detailhistory.push(`/product/${datas.id}/`)}>
-                                                            <Button.Content hidden>View</Button.Content>
-                                                            <Button.Content visible>
-                                                                <Icon name='arrow right' />
-                                                            </Button.Content>
-                                                        </Button>
-                                                    }
-                                                </Card.Description>
+                                                <Card.Header className="head-Content"><h5>ชื่อสินค้า {datas.name}</h5></Card.Header>
+                                                <Card.Header className="head-Content"><h5>ประเภท : {datas.category}</h5></Card.Header>
                                             </Card.Content>
+                                            <Card.Content extra className="text-right">
+                                                ราคา <span style={{ color: 'blue' }}>{datas.price} </span>บาท
+                                            </Card.Content>
+                                            <Card.Content extra className="text-right">
+                                                {user ?
+                                                    <Button floated='right' style={{ width: '50%' }} animated='fade' onClick={() => action(ADD_PRODUCT_AND_AUTH_REQ, { ...datas, quantity: 1 }, user.data.access)}>
+                                                        <Button.Content hidden>เพิ่มลงตะกร้า</Button.Content>
+                                                        <Button.Content visible>
+                                                            <Icon name='shop' />
+                                                        </Button.Content>
+                                                    </Button>
+
+                                                    :
+                                                    <Button floated='right' style={{ width: '50%' }} animated='fade' messages="Please Login" onClick={() => detailhistory.push(`/login`)}>
+                                                        <Button.Content hidden>เพิ่มลงตะกร้า</Button.Content>
+                                                        <Button.Content visible>
+                                                            <Icon name='shop' />
+                                                        </Button.Content>
+                                                    </Button>
+                                                }
+
+                                                {user ?
+
+                                                    <Button floated='right' style={{ width: '30%' }} animated='fade' onClick={() => detailhistory.push(`/product/detail/${datas.id}/`)}>
+                                                        <Button.Content hidden >ดูสินค้า</Button.Content>
+                                                        <Button.Content visible>
+                                                            <Icon name='arrow right' />
+                                                        </Button.Content>
+                                                    </Button>
+                                                    :
+                                                    <Button floated='right' style={{ width: '30%' }} animated='fade' onClick={() => detailhistory.push(`/product/detail/${datas.id}/`)}>
+                                                        <Button.Content hidden>ดูสินค้า</Button.Content>
+                                                        <Button.Content visible>
+                                                            <Icon name='arrow right' />
+                                                        </Button.Content>
+                                                    </Button>
+                                                }
+                                            </Card.Content>
+
                                         </Card>
                                         <br />
                                     </Grid.Column>

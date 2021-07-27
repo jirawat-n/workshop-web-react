@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { FETCH_AUTH_REQ } from '../saga/actionTypes'
-import { Loader, Button, Form, Grid, Header, Image, Message, Segment } from 'semantic-ui-react'
+import { Loader, Button, Form, Grid, Header,  Segment } from 'semantic-ui-react'
 import { useHistory } from 'react-router'
 import '../assets/navbar.css'
 import '../assets/home.css'

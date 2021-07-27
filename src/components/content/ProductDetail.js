@@ -76,13 +76,13 @@ function ProductDetail() {
                         </Grid.Column>
                         <Grid.Column width={6}>
                             <fieldset className="fieldset-main">
-                                <legend className="legendhaed">Description</legend>
-                                <p>ID : {Product.data.id}</p>
-                                <p>Name : {Product.data.name}</p>
-                                <p>Price : {Product.data.price} Bath.</p>
-
+                                <legend className="legendhaed">รายละเอียดสินค้า</legend>
+                                <p>รหัสสินค้า : {Product.data.id}</p>
+                                <p>ชื่อสินค้า : {Product.data.name}</p>
+                                <p>ประเภทสินค้า : {Product.data.category}</p>
+                                <p>ราคาสินค้า : {Product.data.price} บาท</p>
+                                <br></br>  <br></br>
                                 <p>{cart.quantity}</p>
-
                                 {user ?
                                     <div>
                                         <Grid>
@@ -92,9 +92,10 @@ function ProductDetail() {
                                                         textAlign="center"
                                                         className="btnn"
                                                         size="small"
+                                                        color='black'
                                                         onClick={decrement}
                                                     >
-                                                        <Icon className="ico" name="minus"></Icon>
+                                                        <i className="fas fa-minus"></i>
                                                     </Button>
                                                 </Grid.Column>
                                                 <Grid.Column width={6}>
@@ -108,18 +109,25 @@ function ProductDetail() {
                                                         textAlign="center"
                                                         onClick={increment}
                                                         className="btnn"
+                                                        color='black'
                                                     >
-                                                        <Icon name="plus"></Icon>
+                                                        <i className="fas fa-plus"></i>
                                                     </Button>
                                                 </Grid.Column>
                                             </Grid.Row>
                                         </Grid>
-                                        <Button circular fluid onClick={() => action(ADD_PRODUCT_AND_AUTH_REQ, { ...Product.data, quantity: value }, user.data.access)}>Add Cart</Button>
+                                        <Button fluid circular color='black' animated='fade' messages="Please Login"
+                                            onClick={() => action(ADD_PRODUCT_AND_AUTH_REQ, { ...Product.data, quantity: value }, user.data.access)}>
+                                            <Button.Content hidden>เพิ่มลงตะกร้า</Button.Content>
+                                            <Button.Content visible>
+                                                <Icon name='shop' />
+                                            </Button.Content>
+                                        </Button>
                                     </div>
                                     :
                                     <div className="button-buy">
                                         <Button fluid circular color='black' animated='fade' messages="Please Login" onClick={() => detailhistory.push(`/login`)}>
-                                            <Button.Content hidden>Add Cart</Button.Content>
+                                            <Button.Content hidden>เพิ่มลงตะกร้า</Button.Content>
                                             <Button.Content visible>
                                                 <Icon name='shop' />
                                             </Button.Content>

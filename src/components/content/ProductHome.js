@@ -8,6 +8,7 @@ import Pagination_Foot from '../layout/Pagination'
 import ProductHomeRec from './Recommend'
 import PlaceHoldersProductHome from '../layout/placeholder/PlaceHoldersProdutHome'
 import '../assets/home.css'
+import '../assets/sass/product.scss'
 function ProductHome() {
     const [Product, setProduct] = useState([])
     const dispatch = useDispatch();
@@ -23,32 +24,21 @@ function ProductHome() {
 
     return (
         <div className="body">
-            <h1>Category</h1>
+            <h1>ประเภท</h1>
             {Product.length === 0 ?
                 <div className="loader-h" >
-                   <PlaceHoldersProductHome/>
+                    <PlaceHoldersProductHome />
                 </div> :
-                <Grid>                    
+                <Grid>
                     <Grid.Row columns={3}>
                         {Product.map(datas => (
                             <Grid.Column key={datas.id}>
-                                <Card centered>
-                                    <Image className="zoom" src={datas.image} onClick={() => detailhistory.push(`/products/${datas.id}/`)} />
-                                    <Card.Content>
-                                        <Card.Header>{datas.name}</Card.Header>
-                                        <Card.Meta>
-                                            <span className='date'>{datas.detail}</span>
-                                        </Card.Meta>
-                                        <Card.Description>
-                                            <Button floated='right' animated='fade' onClick={() => detailhistory.push(`/products/${datas.id}/`)}>
-                                                <Button.Content hidden>View</Button.Content>
-                                                <Button.Content visible>
-                                                    <Icon name='arrow right' />
-                                                </Button.Content>
-                                            </Button>
-                                        </Card.Description>
-                                    </Card.Content>
-                                </Card>
+                                <div className="image-border">
+                                    <div class="main-image">
+                                        <Image className="img-pro fade-in-image" src={datas.image} onClick={() => detailhistory.push(`/products/${datas.id}/`)} />
+                                    </div>
+                                    <p className="title">{datas.name}</p>
+                                </div>
                                 <br />
                             </Grid.Column>
                         )

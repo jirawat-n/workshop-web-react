@@ -6,6 +6,7 @@ import { Card, Grid, Image, Button, Icon, Loader, Dimmer, Segment } from 'semant
 import { useDispatch, useSelector } from 'react-redux'
 import PlaceHoldersProduct from '../layout/placeholder/PlaceHoldersProdut'
 import '../assets/home.css'
+import '../assets/sass/productAll.scss'
 function ProductHomeRec() {
     // ใช้ SAGA
     const action = (type, payload, token) => dispatch({ type, payload, token })
@@ -34,55 +35,55 @@ function ProductHomeRec() {
                     <div></div>
                 </div> :
                 <Grid text style={{ marginTop: '1em' }}>
-                    <h1>Recommend</h1>
+                    <h1>สินค้าแนะนำ</h1>
                     <Grid.Row columns={4}>
                         {Product.map(datas => (
                             <Grid.Column key={datas.id}>
-                                <Card centered>
-                                    <Image className="zoom" src={datas.image.medium_square_crop} onClick={() => detailhistory.push(`/product/${datas.id}/`)} />
+                                <Card centered className="image-border-all">
+                                    <Image className="img-pro fade-in-image main-image" src={datas.image.medium_square_crop}
+                                        onClick={() => detailhistory.push(`/product/${datas.id}/`)} />
                                     <Card.Content>
                                         <div style={{ height: '100px' }}>
                                             <Card.Header>{datas.name}</Card.Header>
-                                            <Card.Meta>
-                                                <span className='date'>{datas.price} Bath.</span>
-                                            </Card.Meta>
-                                            <Card.Description>
-                                                {user ?
-                                                    <Button floated='right' animated='fade' onClick={() => action(ADD_PRODUCT_AND_AUTH_REQ, { ...datas, quantity: 1 }, user.data.access)}>
-                                                        <Button.Content hidden>Add Cart</Button.Content>
-                                                        <Button.Content visible>
-                                                            <Icon name='shop' />
-                                                        </Button.Content>
-                                                    </Button>
-
-                                                    :
-                                                    <Button floated='right' animated='fade' messages="Please Login" onClick={() => detailhistory.push(`/login`)}>
-                                                        <Button.Content hidden>Add Cart</Button.Content>
-                                                        <Button.Content visible>
-                                                            <Icon name='shop' />
-                                                        </Button.Content>
-                                                    </Button>
-                                                }
-
-                                                {user ?
-
-                                                    <Button floated='right' animated='fade' onClick={() => detailhistory.push(`/product/${datas.id}/`)}>
-                                                        <Button.Content hidden>View</Button.Content>
-                                                        <Button.Content visible>
-                                                            <Icon name='arrow right' />
-                                                        </Button.Content>
-                                                    </Button>
-                                                    :
-                                                    <Button floated='right' animated='fade' onClick={() => detailhistory.push(`/product/${datas.id}/`)}>
-                                                        <Button.Content hidden>View</Button.Content>
-                                                        <Button.Content visible>
-                                                            <Icon name='arrow right' />
-                                                        </Button.Content>
-                                                    </Button>
-                                                }
-
-                                            </Card.Description>
                                         </div>
+                                    </Card.Content>
+                                    <Card.Content extra className="text-right">
+                                        ราคา <span className="content-titkl">{datas.price} </span>บาท
+                                    </Card.Content>
+                                    <Card.Content extra>
+                                        {user ?
+                                            <Button floated='right' primary style={{ width: '50%' }} animated='fade' onClick={() => action(ADD_PRODUCT_AND_AUTH_REQ, { ...datas, quantity: 1 }, user.data.access)}>
+                                                <Button.Content hidden>เพิ่มลงตะกร้า</Button.Content>
+                                                <Button.Content visible>
+                                                    <Icon name='shop' />
+                                                </Button.Content>
+                                            </Button>
+
+                                            :
+                                            <Button floated='right' style={{ width: '50%' }} animated='fade' messages="Please Login" onClick={() => detailhistory.push(`/login`)}>
+                                                <Button.Content hidden>เพิ่มลงตะกร้า</Button.Content>
+                                                <Button.Content visible>
+                                                    <Icon name='shop' />
+                                                </Button.Content>
+                                            </Button>
+                                        }
+
+                                        {user ?
+
+                                            <Button floated='right' style={{ width: '30%' }} animated='fade' onClick={() => detailhistory.push(`/product/detail/${datas.id}/`)}>
+                                                <Button.Content hidden >ดูสินค้า</Button.Content>
+                                                <Button.Content visible>
+                                                    <Icon name='arrow right' />
+                                                </Button.Content>
+                                            </Button>
+                                            :
+                                            <Button floated='right' style={{ width: '30%' }} animated='fade' onClick={() => detailhistory.push(`/product/${datas.id}/`)}>
+                                                <Button.Content hidden>View</Button.Content>
+                                                <Button.Content visible>
+                                                    <Icon name='arrow right' />
+                                                </Button.Content>
+                                            </Button>
+                                        }
                                     </Card.Content>
                                 </Card>
                                 <br />

@@ -52,8 +52,11 @@ function Navbar() {
     }
     return (
         <div>
-            <Menu fixed='top'>
+            <Menu className="Menu-navbar" inverted fixed='top'>
                 <Container>
+                    <Menu.Item as={Link} to="/">
+                        <span className="logo">Mirrorless</span>
+                    </Menu.Item>
                     <Menu.Item
                         name='home'
                         active={Select === 'home'}
@@ -64,7 +67,7 @@ function Navbar() {
                         active={Select === 'products'}
                         onClick={handleItemClick}
                     />
-                    <Dropdown text='Shopping' pointing className='link item'>
+                    <Dropdown text='Categories' pointing className='link item'>
                         <Dropdown.Menu>
                             <Dropdown.Header>Categories</Dropdown.Header>
                             {Product.map(datas => (
@@ -75,9 +78,8 @@ function Navbar() {
                     </Dropdown>
                     <Menu.Menu position='right'>
                         <Menu.Item>
-                            <Input type='text' placeholder='Search...' action value={Searched} onChange={e => setSearched(e.target.value)}><input />
-                                <Button onClick={(e) => handleSearch(e)}>Search</Button>
-
+                            <Input className="input-custom" type='text' placeholder='Sony a1' action value={Searched} onChange={e => setSearched(e.target.value)}><input />
+                                <Button onClick={(e) => handleSearch(e)}>ค้นหา</Button>
                             </Input>
                         </Menu.Item>
                         {user &&
@@ -90,21 +92,21 @@ function Navbar() {
                         }
                         <Menu.Item>
                             {user ?
-                                <h4>Welcome,{user.data.user}</h4>
+                                <span>Welcome,{user.data.user}</span>
                                 :
-                                <h4>Welcome</h4>
+                                <span>Welcome</span>
                             }
                         </Menu.Item>
                         {user ?
                             <Menu.Item onClick={() => detailhistory.push(`/invoice/`)}>
-                                <h4>Invoice</h4>
+                                <span>Invoice</span>
                             </Menu.Item>
                             :
-                            <h4></h4>
+                            <span></span>
                         }
                         <Menu.Item>
                             {user ?
-                                <Button animated='fade' onClick={() => logout()}>
+                                <Button animated='fade' negative onClick={() => logout()}>
                                     <Button.Content visible><Icon name="sign out" /></Button.Content>
                                     <Button.Content hidden>Sign Out</Button.Content>
                                 </Button>

@@ -1,16 +1,6 @@
 import React from 'react'
 import '../assets/footer.css'
-import {
-    Container,
-    Divider,
-    Dropdown,
-    Grid,
-    Header,
-    Image,
-    List,
-    Menu,
-    Segment,
-} from 'semantic-ui-react'
+import { Container, Divider, Grid, Header, List, Segment, } from 'semantic-ui-react'
 
 function Footer() {
     return (
@@ -21,28 +11,21 @@ function Footer() {
                         <Grid.Column width={3}>
                             <Header inverted as='h4' content='About' />
                             <List link inverted>
-                                <List.Item as='a'>Link One</List.Item>
-                                <List.Item as='a'>Link Two</List.Item>
-                                <List.Item as='a'>Link Three</List.Item>
-                                <List.Item as='a'>Link Four</List.Item>
+                                <List.Item as='a'>About Us</List.Item>
                             </List>
                         </Grid.Column>
                         <Grid.Column width={3}>
                             <Header inverted as='h4' content='Category' />
                             <List link inverted>
-                                <List.Item as='a'>Link One</List.Item>
-                                <List.Item as='a'>Link Two</List.Item>
-                                <List.Item as='a'>Link Three</List.Item>
-                                <List.Item as='a'>Link Four</List.Item>
+                                <List.Item as='a'>Lense</List.Item>
+                                <List.Item as='a'>Movie</List.Item>
+                                <List.Item as='a'>Mirrorless</List.Item>
                             </List>
                         </Grid.Column>
                         <Grid.Column width={3}>
                             <Header inverted as='h4' content='Authentation' />
                             <List link inverted>
-                                <List.Item as='a'>Link One</List.Item>
-                                <List.Item as='a'>Link Two</List.Item>
-                                <List.Item as='a'>Link Three</List.Item>
-                                <List.Item as='a'>Link Four</List.Item>
+                                <List.Item as='a'>Sign In</List.Item>
                             </List>
                         </Grid.Column>
                         <Grid.Column width={7}>
@@ -54,7 +37,6 @@ function Footer() {
                     </Grid>
 
                     <Divider inverted section />
-                    <Image centered size='mini' src='/logo.png' />
                     <List horizontal inverted divided link size='small'>
                         <List.Item as='a' href='#'>
                             Site Map
