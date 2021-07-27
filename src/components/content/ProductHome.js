@@ -33,14 +33,14 @@ function ProductHome() {
                         {Product.map(datas => (
                             <Grid.Column key={datas.id}>
                                 <Card centered>
-                                    <Image className="zoom" src={datas.image} onClick={() => detailhistory.push(`/product/${datas.id}/`)} />
+                                    <Image className="zoom" src={datas.image} onClick={() => detailhistory.push(`/products/${datas.id}/`)} />
                                     <Card.Content>
                                         <Card.Header>{datas.name}</Card.Header>
                                         <Card.Meta>
                                             <span className='date'>{datas.detail}</span>
                                         </Card.Meta>
                                         <Card.Description>
-                                            <Button floated='right' animated='fade' onClick={() => detailhistory.push(`/product/${datas.id}/`)}>
+                                            <Button floated='right' animated='fade' onClick={() => detailhistory.push(`/products/${datas.id}/`)}>
                                                 <Button.Content hidden>View</Button.Content>
                                                 <Button.Content visible>
                                                     <Icon name='arrow right' />

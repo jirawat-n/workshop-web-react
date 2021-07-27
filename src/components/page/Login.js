@@ -20,13 +20,13 @@ export default function Login(props) {
         <div className="detail-des">
             <Grid textAlign='center' style={{ height: '40vh' }} verticalAlign='middle'>
                 <Grid.Column style={{ maxWidth: 450 }}>
-                    <Header as='h2' color='teal' textAlign='center'>
-                        <Image src='/logo.png' /> Log-in to your account
+                    <Header as='h2' color='blue' textAlign='center'>
+                        Log-in to your account
                     </Header>
                     <Form size='large'>
                         <Segment stacked>
                             <Form.Input fluid icon='user' value={username} required onChange={e => setUsername(e.target.value)} iconPosition='left' placeholder='Username' />
-                            <Form.Input 
+                            <Form.Input
                                 fluid
                                 icon='lock'
                                 iconPosition='left'
@@ -34,15 +34,12 @@ export default function Login(props) {
                                 type='password'
                                 name='password' value={password} required onChange={e => setPassword(e.target.value)}
                             />
-                            <Button onClick={() => action(FETCH_AUTH_REQ, { username, password })} color='teal' fluid size='large'>
+                            <Button onClick={() => action(FETCH_AUTH_REQ, { username, password })} color='blue' fluid size='large'>
                                 {loading ? <Loader active inline /> : 'Submit'}
                             </Button>
                             {error && <p style={{ color: 'red', fontSize: '12px' }}>{error.msg}</p>}
                         </Segment>
                     </Form>
-                    <Message>
-                        New to us? <a href='#'>Sign Up</a>
-                    </Message>
                 </Grid.Column>
             </Grid>
             <div className="footer-nav"></div>

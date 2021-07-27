@@ -13,7 +13,8 @@ function Pagination_Foot() {
         history.push(`/product/${page}/`)
     }
     function handlePaginationChange({ activePage }) {
-        setPage({ page: activePage })
+        setPage(activePage)
+        history.push(`/product/${Page}/`)
     }
     console.log(Page);
     return (
