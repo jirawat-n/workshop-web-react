@@ -1,5 +1,5 @@
 import { takeEvery, all } from 'redux-saga/effects'
-import { ADD_TO_CART_REQ, FETCT_SUBMIT_REQ, PAGINATION_PRODUCT_REQ, DELETE_CART_REQ, FETCH_START, FETCH_END, FETCH_ERROR, FETCT_CHECKOUT_REQ, ADD_PRODUCT_AND_AUTH_REQ, SEARCH_PRODUCT_REQ, UPDATE_PRODUCT_REQ, SORT_PRODUCT_REQ, SET_AUTH_REQ, FETCH_AUTH_REQ, FETCH_PRODUCT_REQ, FETCH_CART_REQ, ADD_TO_STORE_REQ, DELETE_PRODUCT_AND_AUTH_REQ } from './actionTypes'
+import { ADD_TO_CART_REQ, FETCT_SUBMIT_REQ, SET_AUTH_ERROR_REQ, PAGINATION_PRODUCT_REQ, DELETE_CART_REQ, FETCH_START, FETCH_END, FETCH_ERROR, FETCT_CHECKOUT_REQ, ADD_PRODUCT_AND_AUTH_REQ, SEARCH_PRODUCT_REQ, UPDATE_PRODUCT_REQ, SORT_PRODUCT_REQ, SET_AUTH_REQ, FETCH_AUTH_REQ, FETCH_PRODUCT_REQ, FETCH_CART_REQ, ADD_TO_STORE_REQ, DELETE_PRODUCT_AND_AUTH_REQ } from './actionTypes'
 import { setAuth } from '../saga/counter.action'
 import { setAddProductAction, setDeleteProductAction } from '../saga/counter.action'
 import { startFetch, endFetch, errorFetch } from './StatusActions'
@@ -83,7 +83,9 @@ function* watchSubmitInvoice() {
 function* watchPageProduct() {
     yield takeEvery(PAGINATION_PRODUCT_REQ, FetchPagination)
 }
-
+function* watchSetAuthError() {
+    yield takeEvery(SET_AUTH_ERROR_REQ, setAuth)
+}
 function* watchProduct() {
     yield takeEvery(FETCH_PRODUCT_REQ, fetchProductView)
 }
@@ -108,6 +110,7 @@ export default function* rootSaga() {
         watchStatusInvoice(),
         watchSubmitInvoice(),
         watchPageProduct(),
+        watchSetAuthError(),
     ]
     )
 }

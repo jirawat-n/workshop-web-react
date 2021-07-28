@@ -1,4 +1,5 @@
 import { Route, Switch } from 'react-router-dom';
+import { useEffect } from 'react';
 import './components/assets/navbar.css'
 import './components/assets/home.css'
 import Navbar from './components/layout/Navbar';
@@ -16,7 +17,16 @@ import Footer from './components/layout/Footer';
 import HomePage from './components/page/HomePage';
 import { CSSTransition, TransitionGroup, } from 'react-transition-group';
 import ScrollToTop from './components/layout/ScrollToTop';
+
 function App() {
+   useEffect(() => {
+      const timer = parseFloat(localStorage.getItem('expire_in'))
+      const Current = parseFloat(Date.now() / 1000)
+      if (Current >= timer) {
+         localStorage.removeItem('token')
+         localStorage.removeItem('expire_in')
+      }
+   }, [])
    return (
       <div className="all-font">
          <Navbar />

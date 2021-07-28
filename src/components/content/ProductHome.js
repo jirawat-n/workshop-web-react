@@ -34,10 +34,10 @@ function ProductHome() {
                         {Product.map(datas => (
                             <Grid.Column key={datas.id}>
                                 <div className="image-border">
-                                    <div class="main-image">
+                                    <div className="main-image">
                                         <Image className="img-pro fade-in-image" src={datas.image} onClick={() => detailhistory.push(`/products/${datas.id}/`)} />
                                     </div>
-                                    <p className="title">{datas.name}</p>
+                                    <p className="title"><h3>{datas.name}</h3></p>
                                 </div>
                                 <br />
                             </Grid.Column>

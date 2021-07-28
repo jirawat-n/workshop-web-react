@@ -5,8 +5,9 @@
 }
 
 .image-border-all {
-    margin-left : auto;
-    margin-right: auto;
+    margin-left  : auto;
+    margin-right : auto;
+    border-radius: 0px 0px 20px 20px !important;
 
     &:after {
         content         : '';
@@ -14,19 +15,22 @@
         width           : 250px;
         left            : 5px;
         top             : 5px;
+        border-radius   : 20px !important;
         background-color: #fff;
     }
 
-    .main-image {
+    .main-imagea {
         position       : absolute;
         background-size: 300px 300px;
         z-index        : 2;
+        border         : #2c3e50;
         transition     : .5s cubic-bezier(.5, .03, .41, 1);
     }
 
     &:hover>.main-image {
-        transform : translate(-15px, -15px);
-        transition: .5s cubic-bezier(.5, .03, .41, 1);
+        transform    : translate(-15px, -15px);
+        border-radius: 1000px !important;
+        transition   : .5s cubic-bezier(.5, .03, .41, 1);
     }
 
     &:hover>p.title:after {

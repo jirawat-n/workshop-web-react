@@ -25,7 +25,7 @@ export default function Status() {
                     </Step.Content>
                 </Step>
                 <Step link onClick={() => handleclick('sended')}>
-                    <i class="fas fa-truck" style={{ fontSize: "50px", color: 'green' }}>&nbsp;&nbsp;</i>
+                    <i className="fas fa-truck" style={{ fontSize: "50px", color: 'green' }}>&nbsp;&nbsp;</i>
                     <Step.Content>
                         <Step.Title>ส่งแล้ว</Step.Title>
                         <Step.Description>แสดงเฉพาะสถานะ "ส่งแล้ว"</Step.Description>

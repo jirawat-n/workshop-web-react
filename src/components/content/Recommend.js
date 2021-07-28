@@ -41,14 +41,14 @@ function ProductHomeRec() {
                             <Grid.Column key={datas.id}>
                                 <Card centered className="image-border-all">
                                     <Image className="img-pro fade-in-image main-image" src={datas.image.medium_square_crop}
-                                        onClick={() => detailhistory.push(`/product/${datas.id}/`)} />
+                                        onClick={() => detailhistory.push(`/product/detail/${datas.id}/`)} />
                                     <Card.Content>
                                         <div style={{ height: '100px' }}>
                                             <Card.Header>{datas.name}</Card.Header>
                                         </div>
                                     </Card.Content>
                                     <Card.Content extra className="text-right">
-                                        ราคา <span className="content-titkl">{datas.price} </span>บาท
+                                        <i className="fas fa-tags"></i> ราคา <span className="content-titkl">{datas.price} </span>บาท
                                     </Card.Content>
                                     <Card.Content extra>
                                         {user ?
@@ -78,7 +78,7 @@ function ProductHomeRec() {
                                             </Button>
                                             :
                                             <Button floated='right' style={{ width: '30%' }} animated='fade' onClick={() => detailhistory.push(`/product/${datas.id}/`)}>
-                                                <Button.Content hidden>View</Button.Content>
+                                                <Button.Content hidden>ดูสินค้า</Button.Content>
                                                 <Button.Content visible>
                                                     <Icon name='arrow right' />
                                                 </Button.Content>

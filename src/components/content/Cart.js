@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
 import { DELETE_PRODUCT_AND_AUTH_REQ, FETCT_CHECKOUT_REQ, UPDATE_PRODUCT_REQ } from '../saga/actionTypes'
-import { Icon, Label, Button, Table, Image, Grid, Breadcrumb, Modal, Header, Input, Container } from 'semantic-ui-react'
+import { Icon, Label, Button, Table, Image, Grid, Breadcrumb, Modal, Header } from 'semantic-ui-react'
 import { useSelector, useDispatch } from 'react-redux'
 import { useHistory } from 'react-router'
-import Breadcumb from '../layout/Breadcumb'
 import '../assets/table.css'
 import '../assets/home.css'
 function TableCart() {
@@ -17,7 +16,6 @@ function TableCart() {
     const dispatch = useDispatch();
     const [open, setOpen] = React.useState(false)
     const [openModal, setopenModal] = React.useState(false)
-    const [InvoiceList, setInvoiceList] = useState({})
     function handleupdateAddIncreate(id, quantity) {
         update(UPDATE_PRODUCT_REQ, id, quantity + 1, user.data.access)
     }
@@ -27,9 +25,6 @@ function TableCart() {
     function handleupdateModal(id) {
         action(DELETE_PRODUCT_AND_AUTH_REQ, id, user.data.access)
         setopenModal(false)
-    }
-    function handleupdateCart(e, id) {
-        update(UPDATE_PRODUCT_REQ, e, id, user.data.access)
     }
     const token = user.data.access
     const handleCheckout = () => {
@@ -64,10 +59,10 @@ function TableCart() {
                                 <Table.Header>
                                     <Table.Row style={{ textAlign: "center" }}>
                                         <Table.HeaderCell>ID</Table.HeaderCell>
-                                        <Table.HeaderCell width={5}>ชื่อสินค้า</Table.HeaderCell>
+                                        <Table.HeaderCell width={4}>ชื่อสินค้า</Table.HeaderCell>
                                         <Table.HeaderCell width={2}>ภาพสินค้า</Table.HeaderCell>
                                         <Table.HeaderCell width={3}>จำนวนสินค้า</Table.HeaderCell>
-                                        <Table.HeaderCell width={2}>ราคาสินค้า</Table.HeaderCell>
+                                        <Table.HeaderCell width={3}>ราคาสินค้า</Table.HeaderCell>
                                         <Table.HeaderCell width={5}>จัดการ</Table.HeaderCell>
                                     </Table.Row>
                                 </Table.Header>

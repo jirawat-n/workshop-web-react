@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { FETCT_SUBMIT_REQ } from '../saga/actionTypes'
 import { useHistory } from 'react-router'
-import { Item, Grid, Segment, Button, Icon, Table, Modal, Label, Header } from 'semantic-ui-react'
+import { Item, Grid, Segment, Button, Icon, Table, Modal, Label, Header, Breadcrumb } from 'semantic-ui-react'
 import { useDispatch, useSelector } from 'react-redux'
 import Pagination_Foot from '../layout/Pagination'
 import Breadcumb from '../layout/Breadcumb'
@@ -10,7 +10,7 @@ import Status from '../layout/Status'
 import '../assets/home.css'
 
 import PlaceHoldersProduct from '../layout/placeholder/PlaceHoldersProdut'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 
 function InvoiceDetail() {
     // ใช้ SAGA
@@ -45,12 +45,21 @@ function InvoiceDetail() {
         actioncheckout(FETCT_SUBMIT_REQ, payload, token)
         detailhistory.push(`/invoice/cancle`)
     }
+    const sum = 0
     return (
         <div className="body-des2">
             <Grid columns='equal'>
                 <Grid.Column width={5}>
                     <h1>Invoice Detail</h1>
-                    <Breadcumb />
+                    <Breadcrumb size='large'>
+                        <Breadcrumb.Section><Link to="/">Home</Link></Breadcrumb.Section>
+                        <Breadcrumb.Divider />
+                        <Breadcrumb.Divider icon='right angle' />
+                        <Breadcrumb.Section active>Invoice</Breadcrumb.Section>
+                        <Breadcrumb.Divider />
+                        <Breadcrumb.Divider icon='right angle' />
+                        <Breadcrumb.Section active>ใบสั่งซื้อที่ {Invoice.id}</Breadcrumb.Section>
+                    </Breadcrumb>
                 </Grid.Column>
                 <Grid.Column width={8}>
                 </Grid.Column>
@@ -63,10 +72,11 @@ function InvoiceDetail() {
                     <br></br>
                     <Item.Header as='a'>ID : {Invoice.id}</Item.Header>
                     <Item.Meta>
-                        <span style={{ color: "blue" }}>Status : {Invoice.status}</span>
+                        <span style={{ color: "red" }}>Status : {Invoice.status}</span>
                     </Item.Meta>
                     <Item.Description>Create : {Invoice.created_datetime}</Item.Description>
                     <Item.Description>Update : {Invoice.updated_datetime}</Item.Description>
+                    <Item.Description><h4 style={{ color: "red" }}>หมายเหตุ : ไม่สามารถยกเลิกได้ เนื่องจากพัสดุถูกส่งแล้ว</h4></Item.Description>
                     <p></p>
                     <Item.Description>
                         <Table celled>
@@ -130,7 +140,7 @@ function InvoiceDetail() {
                             <Table.Footer fullWidth>
                                 <Table.Row>
                                     <Table.HeaderCell />
-                                    <Table.HeaderCell textAlign="center">{Invoice.total}</Table.HeaderCell>
+                                    <Table.HeaderCell textAlign="center"></Table.HeaderCell>
                                     <Table.HeaderCell textAlign="center">{Invoice.total} Bath.</Table.HeaderCell>
                                 </Table.Row>
                             </Table.Footer>
@@ -172,10 +182,11 @@ function InvoiceDetail() {
                     <br></br>
                     <Item.Header as='a'>รหัสสินค้า : {Invoice.id}</Item.Header>
                     <Item.Meta>
-                        <span style={{ color: "blue" }}>Status : {Invoice.status}</span>
+                        <span style={{ color: "green" }}>Status : {Invoice.status}</span>
                     </Item.Meta>
                     <Item.Description>สร้างเมื่อ : {Invoice.created_datetime}</Item.Description>
                     <Item.Description>อัพเดตล่าสุด : {Invoice.updated_datetime}</Item.Description>
+                    <Item.Description><h4 style={{ color: "red" }}>หมายเหตุ : ไม่สามารถยกเลิกได้ เนื่องจากพัสดุถูกส่งแล้ว</h4></Item.Description>
                     <p></p>
                     <Item.Description>
                         <Table celled>
@@ -198,7 +209,7 @@ function InvoiceDetail() {
                             <Table.Footer fullWidth>
                                 <Table.Row>
                                     <Table.HeaderCell />
-                                    <Table.HeaderCell textAlign="center">{Invoice.total}</Table.HeaderCell>
+                                    <Table.HeaderCell textAlign="center"></Table.HeaderCell>
                                     <Table.HeaderCell textAlign="center">{Invoice.total} Bath.</Table.HeaderCell>
                                 </Table.Row>
                             </Table.Footer>

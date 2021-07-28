@@ -4,7 +4,9 @@
     margin-top: 6.9vh;
 }
 
-
+.padding-5ss {
+    padding: 10px !important;
+}
 
 .input-style {
     -webkit-border-radius: 20px;
@@ -151,6 +153,7 @@
 
 .body-des3 {
     margin-top: 15px;
+    min-height: 55vh;
 }
 
 .head-Content {
@@ -303,7 +306,38 @@ h5 {
     box-shadow: 0 0 11px rgba(33, 33, 33, .2);
 }
 
-.top-right {
+.all-font {
     right: 0;
     left : auto;
+}
+
+
+.paginationBttns {
+    list-style     : none;
+    display        : flex;
+    justify-content: center;
+}
+
+.paginationBttns a {
+    padding      : 10px;
+    border-radius: 50px;
+    margin       : 8px;
+    border       : 1px solid #d4d4d4;
+    color        : #3f3f3f;
+    cursor       : pointer;
+}
+
+.paginationBttns a:hover {
+    color           : rgb(0, 0, 0);
+    background-color: #f0f0f0;
+}
+
+.paginationActive a {
+    color           : rgb(0, 0, 0);
+    background-color: #f0f0f0;
+}
+
+.paginationDisabled a {
+    color           : rgb(0, 0, 0);
+    background-color: #ffffff;
 }

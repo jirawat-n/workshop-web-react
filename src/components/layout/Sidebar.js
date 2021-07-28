@@ -31,7 +31,7 @@ function Sidebar() {
         <div className="side-des">
             <Menu vertical style={{ width: '100%' }}>
                 <Menu.Item active={Select === 'Home'} onClick={handleItemClick}>Home</Menu.Item>
-                <Menu.Item active={Select === 'Product'} onClick={handleItemClick}>Product</Menu.Item>
+                <Menu.Item active={Select === 'Products'} onClick={handleItemClick}>Products</Menu.Item>
                 <Dropdown text='Category' pointing='left' className='link item'>
                     <Dropdown.Menu>
                         {Product.map(datas => (

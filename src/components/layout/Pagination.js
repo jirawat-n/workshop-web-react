@@ -3,11 +3,12 @@ import { Pagination } from 'semantic-ui-react'
 import axios from 'axios'
 import { useHistory, useParams } from 'react-router'
 import { PAGINATION_PRODUCT_REQ } from '../saga/actionTypes'
-import {  useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
+import ReactPaginate from 'react-paginate';
 function Pagination_Foot() {
     const history = useHistory();
     const dispatch = useDispatch();
-   
+
     const [Page, setPage] = useState(1)
     function handleclick(page) {
         history.push(`/product/${page}/`)
@@ -18,14 +19,16 @@ function Pagination_Foot() {
     }
     console.log(Page);
     return (
-        <Pagination
-            defaultActivePage={1}
-            firstItem={null}
-            lastItem={null}
-            pointing
-            secondary
-            totalPages={3}
-        />
+        <div>
+            <Pagination
+                defaultActivePage={1}
+                firstItem={null}
+                lastItem={null}
+                pointing
+                secondary
+                totalPages={3}
+            />
+        </div>
     )
 }
 
