@@ -17,7 +17,7 @@ function CategoryDetail() {
     const { sort, search } = useSelector(state => state.sort)
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/product/', {
+        axios.get('http://0.0.0.0:8000/product/', {
 
             params: {
                 is_enabled: true,

@@ -74,7 +74,7 @@ function TableCart() {
                                             </Table.Cell>
                                             <Table.Cell>{item.product.name}</Table.Cell>
                                             <Table.Cell width={4}>
-                                                <Image centered src={"http://127.0.0.1:8000" + item.product.image.thumbnail} />
+                                                <Image centered src={"http://0.0.0.0:8000" + item.product.image.thumbnail} />
                                             </Table.Cell>
                                             <Table.Cell style={{ textAlign: "center" }}>
                                                 <Button circular onClick={() => handleupdateAddDecreate(item.id, item.quantity)}>-</Button >

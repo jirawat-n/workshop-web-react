@@ -4,7 +4,7 @@ import axios from 'axios'
 const Checkout = async (token) => {
     try {
         const data = {}
-        const response = await axios.post('http://127.0.0.1:8000/checkout/', data, {
+        const response = await axios.post('http://0.0.0.0:8000/checkout/', data, {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',

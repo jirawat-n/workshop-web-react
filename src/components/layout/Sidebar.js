@@ -18,7 +18,7 @@ function Sidebar() {
     }
     const [Product, setProduct] = useState([])
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/category/')
+        axios.get('http://0.0.0.0:8000/category/')
             .then(data => {
                 const res = data.data.data.results
                 setProduct(res)

@@ -9,7 +9,7 @@ export default function Item() {
     const dispatch = useDispatch();
     const [Product, setProduct] = useState({})
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/product/')
+        axios.get('http://0.0.0.0:8000/product/')
             .then(data => {
                 const res = data.data.data.results
                 setProduct(res)

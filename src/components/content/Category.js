@@ -7,7 +7,7 @@ function Category() {
     const [Product, setProduct] = useState([])
     const detailhistory = useHistory();
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/category/?is_enabled=true/')
+        axios.get('http://0.0.0.0:8000/category/?is_enabled=true/')
             .then(data => {
                 const res = data.data.data.results
                 setProduct(res)

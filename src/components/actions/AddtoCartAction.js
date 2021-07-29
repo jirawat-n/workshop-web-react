@@ -18,7 +18,7 @@ const FetchCart = async ({ payload, token }) => {
                 'Authorization': `Bearer ${token}`
             }
         }
-        const response = await axios.post('http://127.0.0.1:8000/cart/', { product: payload.id, quantity: payload.quantity }, config)
+        const response = await axios.post('http://0.0.0.0:8000/cart/', { product: payload.id, quantity: payload.quantity }, config)
         return response
     }
     catch (error) {
@@ -55,7 +55,7 @@ const DeleteCart = async ({ payload, token }) => {
                 'Authorization': `Bearer ${token}`
             }
         }
-        const response = await axios.delete(`http://127.0.0.1:8000/cart/${id}/`, config)
+        const response = await axios.delete(`http://0.0.0.0:8000/cart/${id}/`, config)
         return response.data
     }
     catch (error) {
@@ -82,7 +82,7 @@ const UpdateFetchCart = async ({ payload, token, quantity }) => {
                 'Authorization': `Bearer ${token}`
             }
         }
-        const response = await axios.patch(`http://127.0.0.1:8000/cart/${payload}/`, { quantity: quantity }, config)
+        const response = await axios.patch(`http://0.0.0.0:8000/cart/${payload}/`, { quantity: quantity }, config)
         return response
     }
     catch (error) {

@@ -35,7 +35,7 @@ function Navbar() {
     }
     const [Product, setProduct] = useState([])
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/category/', {
+        axios.get('http://0.0.0.0:8000/category/', {
             params: {
                 is_enabled: true,
                 search: Searched

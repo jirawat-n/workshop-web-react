@@ -34,7 +34,7 @@ function Invoice() {
     }
 
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/invoice/', config)
+        axios.get('http://0.0.0.0:8000/invoice/', config)
             .then(data => {
                 const res = data.data.data.results
                 setInvoice(res)

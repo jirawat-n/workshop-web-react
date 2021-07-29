@@ -22,7 +22,7 @@ function ProductHomeRec() {
         { key: 'Shirt', content: 'T-Shirt', active: true },
     ]
     useEffect(() => {
-        axios.get('http://127.0.0.1:8000/product/?recommend=true')
+        axios.get('http://0.0.0.0:8000/product/?recommend=true')
             .then(data => {
                 const res = data.data.data.results
                 setProduct(res)

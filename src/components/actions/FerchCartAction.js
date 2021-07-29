@@ -17,7 +17,7 @@ const FetchCart = async (token) => {
                 'Authorization': `Bearer ${token}`
             }
         }
-        const response = await axios.get('http://127.0.0.1:8000/cart/', config)
+        const response = await axios.get('http://0.0.0.0:8000/cart/', config)
         return response.data
     }
     catch (error) {

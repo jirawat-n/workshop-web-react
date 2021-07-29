@@ -12,7 +12,7 @@ class SignIn2 extends Component {
             username: this.state.username,
             password: this.state.password,
         }
-        axios.post('http://127.0.0.1:8000/api/token/', username)
+        axios.post('http://0.0.0.0:8000/api/token/', username)
             .then(res => {
                 const datas = res.status                       
             })

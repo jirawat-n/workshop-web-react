@@ -18,7 +18,7 @@ function ProductDetail() {
     const { user } = useSelector(state => state.auth)
     const { cart } = useSelector(state => state.cart)
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/product/${productId}/`)
+        axios.get(`http://0.0.0.0:8000/product/${productId}/`)
             .then(data => {
                 const title = data.data.data.name
                 document.title = "Product :" + " " + title

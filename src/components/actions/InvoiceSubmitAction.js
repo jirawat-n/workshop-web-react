@@ -8,7 +8,7 @@ const Submit = async ({ payload, token }) => {
     const id = payload
     try {
         const data = {}
-        const response = await axios.post(`http://127.0.0.1:8000/invoice/${id}/void/`, data, {
+        const response = await axios.post(`http://0.0.0.0:8000/invoice/${id}/void/`, data, {
             headers: {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',

@@ -11,7 +11,7 @@ export function* setAuth(payload) {
 }
 
 const FetchUser = async (payload) => {
-    const auth = await axios.post(`http://127.0.0.1:8000/api/token/`, payload)
+    const auth = await axios.post(`http://0.0.0.0:8000/api/token/`, payload)
     return auth
 }
 
